@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/colorBackground">
+
+    <ImageView
+        android:id="@+id/MainActivity_imageAvatar"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="20dp"
+        android:adjustViewBounds="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/MainActivity_textViewBemVindo"
+        app:srcCompat="@drawable/ninja" />
+
+    <TextView
+        android:id="@+id/MainActivity_textViewBemVindo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BEM VINDO USUÁRIO!"
+        android:textSize="20dp"
+        android:layout_margin="10dp"
+        android:textColor="@color/colorGreyFaint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MainActivity_imageAvatar"
+        app:layout_constraintBottom_toTopOf="@+id/MainActivity_textViewMedia" />
+
+    <TextView
+        android:id="@+id/MainActivity_textViewMedia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Média de acertos: 5.1"
+        android:textSize="30dp"
+        android:layout_marginBottom="30dp"
+        android:textColor="@color/colorGreyStrong"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MainActivity_textViewBemVindo"
+        app:layout_constraintBottom_toTopOf="@+id/MainActivity_buttonCompartilhar" />
+
+    <Button
+        android:id="@+id/MainActivity_buttonCompartilhar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@color/colorButtons"
+        android:textColor="@color/colorTextButtons"
+        android:text="@string/compartilhar"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MainActivity_textViewMedia"
+        app:layout_constraintBottom_toTopOf="@+id/MainActivity_buttonRegras" />
+
+    <Button
+        android:id="@+id/MainActivity_buttonRegras"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@color/colorButtons"
+        android:textColor="@color/colorTextButtons"
+        android:text="@string/regras"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MainActivity_buttonCompartilhar"
+        app:layout_constraintBottom_toTopOf="@+id/MainActivity_buttonJogar" />
+
+    <Button
+        android:id="@+id/MainActivity_buttonJogar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@color/colorButtons"
+        android:textColor="@color/colorTextButtons"
+        android:text="@string/jogar"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MainActivity_buttonRegras"
+        app:layout_constraintBottom_toTopOf="@+id/MainActivity_buttonTimesFavoritos" />
+
+    <Button
+        android:id="@+id/MainActivity_buttonTimesFavoritos"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@color/colorButtons"
+        android:textColor="@color/colorTextButtons"
+        android:text="@string/times_favoritos"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MainActivity_buttonJogar"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PerguntaFragment"
+    android:background="@color/colorBackground">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/PerguntaFragment_imageViewPergunta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo"
+        android:adjustViewBounds="true"
+        android:layout_marginHorizontal="50dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/PerguntaFragment_textViewPergunta"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/PerguntaFragment_textViewPergunta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="20dp"
+        android:layout_marginHorizontal="50dp"
+        android:text="@string/sed_ut_perspiciatis_unde_omnis_iste_natus_error_sit_voluptatem_accusant_doloremque_laudantium"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PerguntaFragment_imageViewPergunta"
+        app:layout_constraintBottom_toTopOf="@+id/PerguntaFragment_checkBox1" />
+
+    <CheckBox
+        android:id="@+id/PerguntaFragment_checkBox1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/resposta_1"
+        android:textSize="20dp"
+        android:layout_marginHorizontal="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/PerguntaFragment_textViewPergunta"
+        app:layout_constraintBottom_toTopOf="@+id/PerguntaFragment_checkBox2" />
+
+    <CheckBox
+        android:id="@+id/PerguntaFragment_checkBox2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/resposta_2"
+        android:textSize="20dp"
+        android:layout_marginHorizontal="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/PerguntaFragment_checkBox1"
+        app:layout_constraintBottom_toTopOf="@+id/PerguntaFragment_checkBox3" />
+
+    <CheckBox
+        android:id="@+id/PerguntaFragment_checkBox3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/resposta_3"
+        android:textSize="20dp"
+        android:layout_marginHorizontal="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/PerguntaFragment_checkBox2"
+        app:layout_constraintBottom_toTopOf="@+id/PerguntaFragment_checkBox4" />
+
+    <CheckBox
+        android:id="@+id/PerguntaFragment_checkBox4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/resposta_4"
+        android:textSize="20dp"
+        android:layout_marginHorizontal="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/PerguntaFragment_checkBox2"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

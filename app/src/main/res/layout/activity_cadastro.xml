@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+<LinearLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:background="@color/colorBackground">
+
+
+    <ImageView
+        android:id="@+id/cadastro_imgLogo_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:adjustViewBounds="true"
+        app:srcCompat="@drawable/logo" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:hint="@string/digite_aqui_seu_nome"
+        android:textColorHint="@color/colorGreyStrong">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/cadastro_nome_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Nome"
+            android:textColor="@color/colorGreyStrong"
+            android:backgroundTint="@color/colorLine"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:hint="@string/digite_aqui_usuario"
+        android:textColorHint="@color/colorGreyStrong">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/cadastro_usuario_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorGreyStrong"
+            android:backgroundTint="@color/colorLine"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:hint="@string/digite_aqui_o_seu_e_mail"
+        android:textColorHint="@color/colorGreyStrong">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/cadastro_email_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorGreyStrong"
+            android:backgroundTint="@color/colorLine"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:hint="@string/confirme_o_e_mail"
+        android:textColorHint="@color/colorGreyStrong">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/cadastro_conrfimaEmail_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorGreyStrong"
+            android:backgroundTint="@color/colorLine"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:hint="@string/digite_aqui_a_sua_senha"
+        android:textColorHint="@color/colorGreyStrong">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/cadastro_senha_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorGreyStrong"
+            android:backgroundTint="@color/colorLine"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:hint="@string/confirme_a_senha"
+        android:textColorHint="@color/colorGreyStrong"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/cadastro_conrfimaSenha_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorGreyStrong"
+            android:backgroundTint="@color/colorLine"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/cadastro_buttonCadastrar_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/colorButtons"
+        android:text="Cadastrar novo usuário"
+        android:textColor="@color/colorTextButtons"
+        />
+
+
+</LinearLayout>
+</ScrollView>

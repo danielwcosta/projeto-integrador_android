@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:opacity="opaque"
+    >
+    <item>
+        <shape>
+        <gradient android:angle="90"
+            android:endColor="@color/colorBackground"
+            android:startColor="@color/colorButtons"
+            android:type="linear"
+            />
+        </shape>
+    </item>
+    <item
+        android:width="450dp"
+        android:height="256dp"
+        android:gravity="center_vertical"
+        >
+        <bitmap
+            android:src="@drawable/logo"
+            />
+        </item>
+  </layer-list>

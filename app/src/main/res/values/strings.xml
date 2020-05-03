@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="times_favoritos">Times favoritos</string>
+    <string name="lista_dos_seus_times_favoritos">Lista dos seus times favoritos</string>
+    <string name="remover_time">Remover time</string>
+    <string name="add_time">Add time</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="info_time1">Mussum Ipsum, cacilds vidis litro abertis. In elementis mé pra quem é amistosis quis leo. Em pé sem cair, deitado sem dormir, sentado sem cochilar e fazendo pose. Interagi no mé, cursus quis, vehicula ac nisi. A ordem dos tratores não altera o pão duris.
+
+Quem manda na minha terra sou euzis! Manduma pindureta quium dia nois paga. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nec orci ornare consequat. Praesent lacinia ultrices consectetur. Sed non ipsum felis.</string>
+    <string name="info_time2">Você usa o Lorem Ipsum tradicional? Sabe de nada inocente!! Conheça meu lorem que é Tchan, Tchan, Tchannn!! Txu Txu Tu Paaaaa!! Vem, vem ordinária!! Venha provar do meu dendê que você não vai se arrepender. Só na sacanageeem!! Eu gostchu muitchu, heinn! Eitchaaa template cheio de abundância danadaaa!! Assim você mata o papai hein!? Etâaaa Mainhaaaaa...me abusa nesse seu layout, me gera, me geraaaa ordinária!!! Só na sacanagem!!!! Venha provar do meu dendê Tu du du pááá!.
+ </string>
+    <string name="escudo">escudo:</string>
+    <string name="camisa">camisa:</string>
+    <string name="estadio">estadio:</string>
+    <string name="favoritos">Favoritos</string>
+    <string name="subtitulo_time_favorito">Escolha o seu time favorito</string>
+    <string name="pais">Brasil</string>
+    <string name="liga">Brasileirão</string>
+    <string name="escolha_o_pais">Escolha o País</string>
+    <string name="escolha_a_liga">Escolha a Liga</string>
+    <string name="compartilhar">Compartilhar</string>
+    <string name="regras">Regras</string>
+    <string name="jogar">Jogar</string>
+    <string name="sed_ut_perspiciatis_unde_omnis_iste_natus_error_sit_voluptatem_accusant_doloremque_laudantium">Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusant doloremque laudantium.</string>
+    <string name="responder">Responder</string>
+    <string name="sair">Sair</string>
+    <string name="_10_seg">10 seg</string>
+    <string name="acertos_3_x_3_erros">Acertos 3 x 3 erros</string>
+    <string name="regra1">1 - Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusant doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis.</string>
+    <string name="regra3">3 - Sed ut error sit voluptatem accusant doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis.</string>
+    <string name="regra2">2 - Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusant doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis.</string>
+    <string name="resposta_4">Resposta 4</string>
+    <string name="resposta_3">Resposta 3</string>
+    <string name="resposta_2">Resposta 2</string>
+    <string name="resposta_1">Resposta 1</string>
+    <string name="digite_aqui_seu_nome">Digite aqui seu nome</string>
+    <string name="digite_aqui_usuario">Digite aqui o nome do usuário</string>
+    <string name="digite_aqui_o_seu_e_mail">Digite aqui o seu E-mail</string>
+    <string name="confirme_o_e_mail">Confirme o e-mail</string>
+    <string name="digite_aqui_a_sua_senha">Digite aqui a sua senha</string>
+    <string name="confirme_a_senha">Confirme a senha</string>
+
+    <string-array name="lista_times_favoritos">
+        <item>São Paulo Futebol Clube</item>
+        <item>SPFC</item>
+        <item>Tricolor do Morumbi</item>
+        <item>Tri-Mundial</item>
+        <item>Tri-Hexa Brasileiro</item>
+    </string-array>
+</resources>

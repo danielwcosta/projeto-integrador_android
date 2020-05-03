@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="colorBackground">#CCDBDC</color>
+    <color name="colorButtons">#007EA7</color>
+    <color name="colorTextButtons">#FFFFFF</color>
+    <color name="colorLogo">#003249</color>
+    <color name="colorFacebook">#00A6FF</color>
+    <color name="colorGoogle">#F95F62</color>
+    <color name="colorGreyStrong">#616265</color>
+    <color name="colorGreyFaint">#8492A7</color>
+    <color name="colorRed">#F80007</color>
+    <color name="colorLine">#051F2C</color>
+</resources>
