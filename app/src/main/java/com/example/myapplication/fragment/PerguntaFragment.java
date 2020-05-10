@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.fragment;
 
 import android.os.Bundle;
 
@@ -8,13 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.myapplication.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TimeFavoritoFragment extends Fragment {
+public class PerguntaFragment extends Fragment {
 
-    public TimeFavoritoFragment() {
+    public PerguntaFragment() {
         // Required empty public constructor
     }
 
@@ -23,6 +25,6 @@ public class TimeFavoritoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_time_favorito, container, false);
+        return inflater.inflate(R.layout.fragment_pergunta, container, false);
     }
 }
