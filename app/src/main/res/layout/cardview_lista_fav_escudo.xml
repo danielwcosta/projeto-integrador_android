@@ -2,14 +2,18 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragment.FavoritosEscudoFragment"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:background="@color/colorBackground">
-
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview_lista_fav_cardview_id"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        app:cardBackgroundColor="@color/colorBackground">
     <ImageView
-        android:id="@+id/fragment_favoritos_img_escudo_id"
+        android:id="@+id/cardview_lista_fav_img_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/time_escudo" />
+    </androidx.cardview.widget.CardView>
 </FrameLayout>

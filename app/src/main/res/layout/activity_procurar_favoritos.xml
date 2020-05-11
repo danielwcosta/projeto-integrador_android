@@ -95,17 +95,30 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:id="@+id/procurar_favorito_containerfrag_id"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="40dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+<!--        <LinearLayout-->
+<!--            android:id="@+id/procurar_favorito_containerfrag_id"-->
+<!--            android:layout_width="200dp"-->
+<!--            android:layout_height="200dp"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="40dp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent">-->
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
+
+        <FrameLayout
+            android:id="@+id/lista_add_favoritos_containerfrag_id"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="200"
+            android:layout_margin="20dp">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/lista_add_favoritos_recycler_view_id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </FrameLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/procurar_favorito_floatingActionButton_id"
