@@ -32,25 +32,23 @@ public class ListaFavoritosActivity extends AppCompatActivity {
 
     private Activity activity=this;
     private FragmentManager fragmentManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_favoritos);
 
-//        carregaFragment(new TimeFavoritoFragment());
-
         recyclerView = findViewById(R.id.lista_favoritos_recycler_view_id);
-        layoutManager = new GridLayoutManager(this,2);
-        adapter = new ListaFavoritosAdapter(addTime());
-
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
-
 
         btnAddTime = findViewById(R.id.lista_favoritos_add_time_id);
         btnRemoveTime = findViewById(R.id.lista_favoritos_remover_time_id);
         setaVoltar = findViewById(R.id.lista_favoritos_seta_voltar_id);
 
+        layoutManager = new GridLayoutManager(this,2);
+        adapter = new ListaFavoritosAdapter(addTime());
+
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
 
         btnAddTime.setOnClickListener((new View.OnClickListener() {
             @Override
@@ -66,6 +64,8 @@ public class ListaFavoritosActivity extends AppCompatActivity {
                 startActivity(mainIntent);
             }
         });
+
+        //carregaFragment(new TimeFavoritoFragment());
     }
 
 //    public void carregaFragment(Fragment fragment){
@@ -82,6 +82,10 @@ public class ListaFavoritosActivity extends AppCompatActivity {
         timesList.add(new Time(R.drawable.time_escudo2,"Ceará"));
         timesList.add(new Time(R.drawable.time_escudo3,"Poços de Caldas"));
         timesList.add(new Time(R.drawable.time_escudo4,"Sei la o nome"));
+        timesList.add(new Time(R.drawable.time_escudo5,"Chapecoense"));
+        timesList.add(new Time(R.drawable.time_escudo5,"Chapecoense"));
+        timesList.add(new Time(R.drawable.time_escudo5,"Chapecoense"));
+        timesList.add(new Time(R.drawable.time_escudo5,"Chapecoense"));
         timesList.add(new Time(R.drawable.time_escudo5,"Chapecoense"));
 
         return timesList;
