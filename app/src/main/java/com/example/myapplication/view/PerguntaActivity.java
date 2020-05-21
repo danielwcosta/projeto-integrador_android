@@ -35,7 +35,6 @@ public class PerguntaActivity extends AppCompatActivity {
         carregaFragment(new PerguntaFragment());
 
         btnSair = findViewById(R.id.PerguntaActivity_seta_voltar_id);
-//        btnResponder = findViewById(R.id.PerguntaActivity_buttonResponder);
 
         startAnimation();
 
@@ -49,18 +48,8 @@ public class PerguntaActivity extends AppCompatActivity {
 
 
         }));
-//
-//        btnResponder.setOnClickListener((new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(activity, "ACERTOOO MISERAVI!!!.", Toast.LENGTH_LONG).show();
-//                Intent perguntaIntent = new Intent(activity,PerguntaActivity.class);
-//                startActivity(perguntaIntent);
-//            }
-//        }));
+
     }
-
-
 
     public void carregaFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();

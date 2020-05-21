@@ -1,11 +1,9 @@
 <resources>
-    <string name="app_name">Quiz Sob Pressão!!!</string>
+    <string name="app_name">Sob Pressão!!!</string>
     <string name="times_favoritos">Times favoritos</string>
     <string name="lista_dos_seus_times_favoritos">Lista dos seus times favoritos</string>
     <string name="remover_time">Remover time</string>
     <string name="add_time">Add time</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="info_time1">Mussum Ipsum, cacilds vidis litro abertis. In elementis mé pra quem é amistosis quis leo. Em pé sem cair, deitado sem dormir, sentado sem cochilar e fazendo pose. Interagi no mé, cursus quis, vehicula ac nisi. A ordem dos tratores não altera o pão duris.</string>
     <string name="info_time2">Você usa o Lorem Ipsum tradicional? Sabe de nada inocente!! Conheça meu lorem que é Tchan, Tchan, Tchannn!! Txu Txu Tu Paaaaa!! Vem, vem ordinária!! Venha provar do meu dendê que você não vai se arrepender. Só na sacanageeem!! Eu gostchu muitchu, heinn! Eitchaaa template cheio de abundância danadaaa!! Assim você mata o papai hein!?</string>
@@ -21,7 +19,7 @@
     <string name="compartilhar">Compartilhar</string>
     <string name="regras">Regras</string>
     <string name="jogar">Jogar</string>
-    <string name="pergunta">Se o pato perder a pata ele fica manco ou viuvo?</string>
+    <string name="pergunta">Se o pato perder a pata ele fica manco ou viúvo?</string>
     <string name="responder">Responder</string>
     <string name="sair">Sair</string>
     <string name="_10_seg">10 seg</string>
@@ -30,7 +28,7 @@
     <string name="regra3">3 - Sed ut error sit voluptatem accusant doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis.</string>
     <string name="regra2">2 - Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusant doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis.</string>
     <string name="resposta_1">Manco</string>
-    <string name="resposta_2">Viuvo</string>
+    <string name="resposta_2">Viúvo</string>
     <string name="resposta_3">Ovo de pato</string>
     <string name="resposta_4">PCD</string>
     <string name="digite_aqui_seu_nome">Digite aqui seu nome</string>
