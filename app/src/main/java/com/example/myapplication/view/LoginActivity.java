@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
@@ -15,7 +16,8 @@ import com.example.myapplication.R;
 public class LoginActivity extends AppCompatActivity {
 
     private EditText usuario,senha;
-    private Button buttonCadastro, buttonLogin, buttonLoginFaceBook, buttonLoginGoogle;
+    private TextView cadastro;
+    private Button  buttonLogin, buttonLoginFaceBook, buttonLoginGoogle;
     private Activity activity = this;
 
     @Override
@@ -23,8 +25,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         initView();
 
-        buttonCadastro = findViewById(R.id.cadastro);
-        buttonCadastro.setOnClickListener(new View.OnClickListener() {
+        cadastro = findViewById(R.id.cadastro);
+        cadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent cadastroIntent = new Intent(activity, CadastroActivity.class);

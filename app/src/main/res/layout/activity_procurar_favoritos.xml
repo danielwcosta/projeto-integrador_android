@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorBackground"
+    android:background="@drawable/grama_textura"
     >
     <ImageView
         android:id="@+id/procurar_favoritos_seta_voltar_id"
@@ -21,6 +21,7 @@
         android:layout_height="wrap_content"
         android:text="@string/favoritos"
         android:textSize="40dp"
+        android:textColor="@color/colorTextWhite"
         android:layout_gravity="center"
         android:gravity="center"/>
     <TextView
@@ -30,6 +31,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:text="@string/subtitulo_time_favorito"
+        android:textColor="@color/colorTextWhite"
         android:textSize="20dp"
         android:layout_gravity="center"
         android:gravity="center"/>
@@ -41,14 +43,17 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:hint="@string/escolha_o_pais">
+        android:hint="@string/escolha_o_pais"
+        app:hintTextColor="@color/colorTextWhite"
+        android:theme="@style/StyledTilEditText">
 
 
         <AutoCompleteTextView
             android:id="@+id/procurar_favoritos_pais_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/pais" />
+            android:text="@string/pais"
+            android:textColor="@color/colorTextWhite"/>
         <!--        https://www.youtube.com/watch?v=on_OrrX7Nw4  Usar spinner consultar aqui para configurar dropdown-->
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -60,14 +65,18 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:hint="@string/escolha_a_liga">
+        android:hint="@string/escolha_a_liga"
+        app:hintTextColor="@color/colorTextWhite"
+        android:theme="@style/StyledTilEditText"
+        >
 
 
         <AutoCompleteTextView
             android:id="@+id/procurar_favoritos_liga_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/liga" />
+            android:text="@string/liga"
+            android:textColor="@color/colorTextWhite"/>
         <!--        https://www.youtube.com/watch?v=on_OrrX7Nw4  Usar spinner consultar aqui para configurar dropdown-->
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -79,14 +88,17 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:hint="Escolha o time favorito">
+        android:hint="Escolha o time favorito"
+        app:hintTextColor="@color/colorTextWhite"
+        android:theme="@style/StyledTilEditText">
 
 
         <AutoCompleteTextView
             android:id="@+id/procurar_favoritos_time_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="São Paulo F. C." />
+            android:text="São Paulo F. C."
+            android:textColor="@color/colorTextWhite"/>
         <!--        https://www.youtube.com/watch?v=on_OrrX7Nw4  Usar spinner consultar aqui para configurar dropdown-->
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -126,7 +138,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:clickable="true"
-            app:backgroundTint="@color/colorButtons"
+            app:backgroundTint="@color/colorBtnStart"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
             app:layout_constraintBottom_toBottomOf="parent"

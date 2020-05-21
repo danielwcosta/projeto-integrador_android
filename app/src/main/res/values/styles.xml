@@ -3,8 +3,8 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/colorLightGreen</item>
+        <item name="colorPrimaryDark">@color/colorDarkGreen</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
     <style name="SplashTheme"
@@ -12,6 +12,17 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+    <style name="StyledTilEditTextTheme">
+        <item name="colorControlNormal">@color/colorTextWhite</item> // Cor padrão da linha
+        <item name="colorControlActivated">@color/colorTextWhite</item> // Cor linha e texto quando recebe foco
+    </style>
+
+    <style name="StyledTilEditText">
+        <item name="android:theme">@style/StyledTilEditTextTheme</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:textColorHint">@color/colorTextWhite</item> // Cor texto(hint) sem foco
+        <item name="android:textColor">@color/colorTextWhite</item> // Cor texto
     </style>
 
 </resources>

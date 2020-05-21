@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.TimeFavoritoActivity"
-    android:background="@color/colorBackground">
+    android:background="@drawable/grama_textura">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -35,7 +36,7 @@
                 android:text="São Paulo F. C."
                 android:textSize="40sp"
                 android:textAlignment="center"
-                android:textColor="@color/colorGreyStrong"
+                android:textColor="@color/colorTextWhite"
                 app:layout_constraintTop_toBottomOf="@id/time_favorito_seta_voltar_id"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
@@ -46,7 +47,7 @@
                 android:text="@string/info_time1"
                 android:textSize="20sp"
                 android:textAlignment="gravity"
-                android:textColor="@color/colorGreyStrong"
+                android:textColor="@color/colorTextWhite"
                 app:layout_constraintTop_toBottomOf="@id/time_favorito_nome_id"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
@@ -59,6 +60,8 @@
                 android:textSize="20sp"
                 android:textAllCaps="true"
                 android:textAlignment="center"
+                android:textColor="@color/colorTextBlack"
+
                 app:layout_constraintEnd_toEndOf="@+id/time_favorito_escudo_img_id"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/time_favorito_info1_id" />
@@ -70,6 +73,8 @@
                 android:textSize="20sp"
                 android:textAllCaps="true"
                 android:textAlignment="center"
+                android:textColor="@color/colorTextBlack"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/time_favorito_camisa_img_id"
                 app:layout_constraintTop_toBottomOf="@id/time_favorito_info1_id" />
@@ -99,7 +104,8 @@
                 android:text="@string/info_time2"
                 android:textSize="20sp"
                 android:textAlignment="gravity"
-                android:textColor="@color/colorGreyStrong"
+                android:textColor="@color/colorTextWhite"
+
                 app:layout_constraintTop_toBottomOf="@id/time_favorito_camisa_img_id"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
@@ -110,8 +116,9 @@
                 android:text="@string/estadio"
                 android:textSize="20sp"
                 android:textAlignment="center"
-                android:textColor="@color/colorGreyStrong"
                 android:textAllCaps="true"
+                android:textColor="@color/colorTextBlack"
+
                 app:layout_constraintTop_toBottomOf="@id/time_favorito_info2_id"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>

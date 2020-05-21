@@ -5,15 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.PerguntaActivity"
-    android:background="@color/colorBackground">
+    android:background="@drawable/grama_textura">
 
     <TextView
         android:id="@+id/PerguntaActivity_textViewPlacar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/acertos_3_x_3_erros"
-        android:textColor="@color/colorGreyStrong"
+        android:textColor="@color/colorText"
         android:textSize="30dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,6 +29,16 @@
         android:orientation="vertical">
 
     </FrameLayout>
+
+    <ImageView
+        android:id="@+id/PerguntaActivity_imageViewRelogio"
+        android:layout_width="40dp"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/clock"
+        app:layout_constraintEnd_toStartOf="@+id/PerguntaActivity_textViewTempo"
+        app:layout_constraintTop_toTopOf="@+id/PerguntaActivity_textViewTempo"
+        app:layout_constraintBottom_toBottomOf="@+id/PerguntaActivity_textViewTempo"/>
+
     <TextView
         android:id="@+id/PerguntaActivity_textViewTempo"
         android:layout_width="wrap_content"
@@ -39,23 +50,14 @@
         app:layout_constraintStart_toStartOf="@+id/PerguntaActivity_buttonSair"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
-
-    <ImageView
-        android:id="@+id/PerguntaActivity_imageViewRelogio"
-        android:layout_width="40dp"
-        android:layout_height="100dp"
-        app:srcCompat="@drawable/clock"
-        app:layout_constraintEnd_toStartOf="@+id/PerguntaActivity_textViewTempo"
-        app:layout_constraintTop_toTopOf="@+id/PerguntaActivity_textViewTempo"
-        app:layout_constraintBottom_toBottomOf="@+id/PerguntaActivity_textViewTempo"/>
-
     <Button
         android:id="@+id/PerguntaActivity_buttonSair"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sair"
-        android:background="@color/colorButtons"
-        android:textColor="@color/colorTextButtons"
+        android:textColor="@color/colorText"
+        android:background="@drawable/buttonshapesmall"
+        android:textSize="16sp"
         android:layout_margin="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
@@ -65,8 +67,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/responder"
-        android:background="@color/colorButtons"
+        android:background="@drawable/buttonshapesmall"
         android:textColor="@color/colorTextButtons"
+        android:textSize="16sp"
         android:layout_margin="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>

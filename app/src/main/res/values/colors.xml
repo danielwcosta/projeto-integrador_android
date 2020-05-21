@@ -5,7 +5,6 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="colorBackground">#CCDBDC</color>
     <color name="colorButtons">#007EA7</color>
-    <color name="colorTextButtons">#FFFFFF</color>
     <color name="colorLogo">#003249</color>
     <color name="colorFacebook">#00A6FF</color>
     <color name="colorGoogle">#F95F62</color>
@@ -13,4 +12,17 @@
     <color name="colorGreyFaint">#8492A7</color>
     <color name="colorRed">#F80007</color>
     <color name="colorLine">#051F2C</color>
+    <color name="colorBtnStart">#c76e11</color>
+    <color name="colorBtnCenter">#e98a15</color>
+    <color name="colorBtnEnd">#fff05a</color>
+    <color name="colorBtnBorder">#8d4f2a</color>
+    <color name="colorUltraLightGreen">#85F83C</color>
+    <color name="colorLightGreen">#3E711E</color>
+    <color name="colorDarkGreen">#2A4D14</color>
+    <color name="colorText">#712906</color>
+    <color name="colorTextButtons">#712906</color>
+    <color name="colorTextWhite">#e0e2db</color>
+    <color name="colorTextBlack">#2e3532</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorTransparent">#00FFFFFF</color>
 </resources>
