@@ -21,7 +21,7 @@
     <string name="compartilhar">Compartilhar</string>
     <string name="regras">Regras</string>
     <string name="jogar">Jogar</string>
-    <string name="sed_ut_perspiciatis_unde_omnis_iste_natus_error_sit_voluptatem_accusant_doloremque_laudantium">Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusant doloremque laudantium.</string>
+    <string name="pergunta">Se o pato perder a pata ele fica manco ou viuvo?</string>
     <string name="responder">Responder</string>
     <string name="sair">Sair</string>
     <string name="_10_seg">10 seg</string>
@@ -29,10 +29,10 @@
     <string name="regra1">1 - Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusant doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis.</string>
     <string name="regra3">3 - Sed ut error sit voluptatem accusant doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis.</string>
     <string name="regra2">2 - Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusant doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis.</string>
-    <string name="resposta_4">Resposta 4</string>
-    <string name="resposta_3">Resposta 3</string>
-    <string name="resposta_2">Resposta 2</string>
-    <string name="resposta_1">Resposta 1</string>
+    <string name="resposta_1">Manco</string>
+    <string name="resposta_2">Viuvo</string>
+    <string name="resposta_3">Ovo de pato</string>
+    <string name="resposta_4">PCD</string>
     <string name="digite_aqui_seu_nome">Digite aqui seu nome</string>
     <string name="digite_aqui_usuario">Digite aqui o nome do usuário</string>
     <string name="digite_aqui_o_seu_e_mail">Digite aqui o seu E-mail</string>

@@ -6,19 +6,19 @@
     <item>
         <shape>
         <gradient android:angle="45"
-            android:startColor="@color/colorLightGreen"
-            android:endColor="@color/colorUltraLightGreen"
+            android:startColor="@color/colorDarkGreen"
+            android:endColor="@color/ic_launcher_background"
             android:type="linear"
             />
         </shape>
     </item>
     <item
-        android:width="450dp"
-        android:height="256dp"
-        android:gravity="center_vertical"
+        android:width="300dp"
+        android:height="169dp"
+        android:gravity="center"
         >
         <bitmap
-            android:src="@drawable/logo"
+            android:src="@drawable/logo_app"
             />
         </item>
   </layer-list>
