@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         initView();
 
-        cadastro = findViewById(R.id.cadastro);
+        cadastro = findViewById(R.id.login_cadastro_id);
         cadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        buttonLoginFaceBook = findViewById(R.id.buttonLoginFacebook);
+        buttonLoginFaceBook = findViewById(R.id.login_button_facebook_id);
         buttonLoginFaceBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        buttonLoginGoogle = findViewById(R.id.buttonLoginGoogle);
+        buttonLoginGoogle = findViewById(R.id.login_button_google_id);
         buttonLoginGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,9 +75,9 @@ public class LoginActivity extends AppCompatActivity {
     private void initView(){
         setContentView(R.layout.activity_login);
 
-        usuario = findViewById(R.id.usuario);
-        senha = findViewById(R.id.senha);
-        buttonLogin = findViewById(R.id.buttonLogin);
+        usuario = findViewById(R.id.login_text_input_usuario_id);
+        senha = findViewById(R.id.login_text_input_senha_id);
+        buttonLogin = findViewById(R.id.login_button_login_id);
 
     }
 }
