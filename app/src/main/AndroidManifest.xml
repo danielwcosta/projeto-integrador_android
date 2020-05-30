@@ -9,13 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.TimeFavoritoActivity"/>
+        <activity android:name=".view.CadastroActivity"></activity>
+        <activity android:name=".view.TimeFavoritoActivity" />
         <activity android:name=".view.ProcurarFavoritosActivity" />
         <activity android:name=".view.ListaFavoritosActivity" />
         <activity android:name=".view.PerguntaActivity" />
         <activity android:name=".view.RegrasActivity" />
         <activity android:name=".view.MainActivity" />
-        <activity android:name=".view.CadastroActivity" />
         <activity android:name=".view.LoginActivity" />
         <activity
             android:name=".view.SplashActivity"

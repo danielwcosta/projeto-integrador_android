@@ -1,5 +1,18 @@
 <resources>
     <string name="app_name">Sob Pressão!!!</string>
+
+    <string name="timestamp">Timestamp</string>
+    <string name="device_information">Device Information</string>
+    <string name="brand">Brand</string>
+    <string name="device">Device</string>
+    <string name="model">Model</string>
+    <string name="id">Id</string>
+    <string name="product">Product</string>
+    <string name="build_info">Build Info</string>
+    <string name="sdk">SDK</string>
+    <string name="release">Release</string>
+    <string name="incremental">Incremental</string>
+
     <string name="times_favoritos">Times favoritos</string>
     <string name="lista_dos_seus_times_favoritos">Lista dos seus times favoritos</string>
     <string name="remover_time">Remover time</string>
