@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.RegrasActivity"
+    android:orientation="vertical"
     android:background="@drawable/grama_textura">
 
     <ImageView
@@ -13,8 +14,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_arrow_back_sob_pressao_24dp" />
 
     <TextView
@@ -23,66 +22,61 @@
         android:layout_height="wrap_content"
         android:text="@string/regras"
         android:textSize="40sp"
-        android:textColor="@color/colorTextWhite"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        android:textColor="@color/colorText"
+        android:layout_gravity="center"
+ />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="20dp"
+        android:background="@drawable/textbox_shape">
     <TextView
         android:id="@+id/RegrasActivity_textViewRegra1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="50dp"
-        android:layout_marginVertical="20dp"
+        android:layout_marginVertical="10dp"
         android:text="@string/regra1"
         android:textSize="20sp"
         android:textColor="@color/colorTextWhite"
-        app:layout_constraintTop_toBottomOf="@+id/RegrasActivity_textViewRegras"
-        app:layout_constraintBottom_toTopOf="@+id/RegrasActivity_textViewRegra2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+  />
 
     <TextView
         android:id="@+id/RegrasActivity_textViewRegra2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="50dp"
-        android:layout_marginVertical="20dp"
+        android:layout_marginVertical="10dp"
         android:text="@string/regra2"
         android:textSize="20sp"
         android:textColor="@color/colorTextWhite"
-
-        app:layout_constraintTop_toBottomOf="@+id/RegrasActivity_textViewRegra1"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+ />
 
     <TextView
         android:id="@+id/RegrasActivity_textViewRegra3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="50dp"
-        android:layout_marginVertical="20dp"
+        android:layout_marginVertical="10dp"
         android:text="@string/regra3"
         android:textSize="20sp"
         android:textColor="@color/colorTextWhite"
-
-        app:layout_constraintTop_toBottomOf="@+id/RegrasActivity_textViewRegra2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
+/>
+</LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
     <Button
         android:id="@+id/MainActivity_buttonJogar"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/jogar"
+        android:layout_marginHorizontal="50dp"
         android:layout_marginVertical="20dp"
         android:background="@drawable/buttonshape"
         android:textColor="@color/colorText"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+    />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

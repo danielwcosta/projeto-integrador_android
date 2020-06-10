@@ -19,7 +19,7 @@
     <string name="add_time">Add time</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="info_time1">Mussum Ipsum, cacilds vidis litro abertis. In elementis mé pra quem é amistosis quis leo. Em pé sem cair, deitado sem dormir, sentado sem cochilar e fazendo pose. Interagi no mé, cursus quis, vehicula ac nisi. A ordem dos tratores não altera o pão duris.</string>
-    <string name="info_time2">Você usa o Lorem Ipsum tradicional? Sabe de nada inocente!! Conheça meu lorem que é Tchan, Tchan, Tchannn!! Txu Txu Tu Paaaaa!! Vem, vem ordinária!! Venha provar do meu dendê que você não vai se arrepender. Só na sacanageeem!! Eu gostchu muitchu, heinn! Eitchaaa template cheio de abundância danadaaa!! Assim você mata o papai hein!?</string>
+    <string name="info_time2">São Paulo Futebol Clube (conhecido apenas por São Paulo e cujo acrônimo é SPFC) é uma associação esportiva brasileira fundada em 1930 e refundada em 1935.2 No futebol, o clube é um dos maiores vencedores do Brasil e um dos mais bem sucedidos, sendo que, dentre seus principais títulos, destacam-se os seis Campeonatos Brasileiros, as três Copas Libertadores, os três Campeonatos Mundiais (duas Copas Intercontinentais e uma Copa do Mundo de Clubes da FIFA), e os vinte e um Campeonatos Paulistas conquistados.3 Quanto a títulos internacionais, o São Paulo, com 12 conquistas, é o terceiro time da América do Sul com o maior número de troféus, ficando atrás somente de Boca Juniors e Independiente. A agremiação também possui tradição em outros esportes que não o futebol, como no atletismo, onde seu atleta Adhemar Ferreira da Silva foi o primeiro bicampeão olímpico do país e quebrou recordes mundiais, os quais são responsáveis pelas duas estrelas douradas no escudo do clube.</string>
     <string name="escudo">escudo:</string>
     <string name="camisa">camisa:</string>
     <string name="estadio">estadio:</string>
@@ -58,6 +58,7 @@
     <string name="nao_tem_conta">Ainda não tem conta?!</string>
     <string name="login_facebook">Login Facebook</string>
     <string name="login_google">Login Google</string>
+    <string name="sobre">Sobre</string>
 
     <string-array name="lista_times_favoritos">
         <item>São Paulo Futebol Clube</item>

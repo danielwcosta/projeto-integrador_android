@@ -30,6 +30,7 @@
         android:textSize="30sp"
         android:textColor="@color/colorTextWhite"
         android:textAlignment="center"
+        android:background="@drawable/textbox_shape"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PerguntaFragment_imageViewPergunta"

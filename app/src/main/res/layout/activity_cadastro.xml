@@ -7,12 +7,12 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent">
 <LinearLayout
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".view.MainActivity"
     android:background="@drawable/grama_textura">
+
 
 
     <ImageView
@@ -23,15 +23,21 @@
         android:adjustViewBounds="true"
         app:srcCompat="@drawable/logo" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:background="@drawable/textbox_shape">
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:hint="@string/digite_aqui_seu_nome"
         app:hintTextColor="@color/colorTextWhite"
-        android:theme="@style/StyledTilEditText">
+        android:theme="@style/StyledTilEditText"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/cadastro_nome_id"
@@ -46,11 +52,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:hint="@string/digite_aqui_usuario"
         app:hintTextColor="@color/colorTextWhite"
-        android:theme="@style/StyledTilEditText">
+        android:theme="@style/StyledTilEditText"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/cadastro_usuario_id"
@@ -65,11 +70,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:hint="@string/digite_aqui_o_seu_e_mail"
         app:hintTextColor="@color/colorTextWhite"
-        android:theme="@style/StyledTilEditText">
+        android:theme="@style/StyledTilEditText"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/cadastro_email_id"
@@ -84,11 +88,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:hint="@string/confirme_o_e_mail"
         app:hintTextColor="@color/colorTextWhite"
-        android:theme="@style/StyledTilEditText">
+        android:theme="@style/StyledTilEditText"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/cadastro_conrfimaEmail_id"
@@ -103,11 +106,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:hint="@string/digite_aqui_a_sua_senha"
         app:hintTextColor="@color/colorTextWhite"
-        android:theme="@style/StyledTilEditText">
+        android:theme="@style/StyledTilEditText"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/cadastro_senha_id"
@@ -122,11 +124,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:hint="@string/confirme_a_senha"
         app:hintTextColor="@color/colorTextWhite"
         android:theme="@style/StyledTilEditText"
+
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -137,7 +138,7 @@
 
             />
     </com.google.android.material.textfield.TextInputLayout>
-
+    </LinearLayout>
     <Button
         android:id="@+id/cadastro_buttonCadastrar_id"
         android:layout_width="match_parent"

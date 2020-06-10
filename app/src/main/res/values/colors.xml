@@ -25,4 +25,5 @@
     <color name="colorTextBlack">#2e3532</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorTransparent">#00FFFFFF</color>
+    <color name="colorBackgroundText">#40082500</color>
 </resources>
