@@ -89,11 +89,11 @@ public class PerguntaActivity extends AppCompatActivity implements PerguntaActiv
             @Override
             public void onAnimationEnd(Animator animation) {
                 Toast.makeText(activity, "Acabou o tempo!!!!", Toast.LENGTH_SHORT).show();
-//                removeFragment(new PerguntaFragment()); // trava app qdo sai da activity
+ //               removeFragment(new PerguntaFragment()); // trava app qdo sai da activity
                 Handler handler = new Handler();
 
                 handler.postDelayed(() -> {
-//                    carregaFragment(new PerguntaFragment()); // trava app qdo sai da activity
+ //                   carregaFragment(new PerguntaFragment()); // trava app qdo sai da activity
                     progressAnimator.start();
                 }, 2500);
 

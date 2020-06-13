@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "455696502426",
+    "firebase_url": "https://sobpressao-e35e6.firebaseio.com",
+    "project_id": "sobpressao-e35e6",
+    "storage_bucket": "sobpressao-e35e6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:455696502426:android:2b39d7b7891f2e6f379923",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "455696502426-duk1dp48c6jupc0fqg18bvvd3pt91qt3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyjglESHjFb_IDmpTqZr7yAg58v52fCF0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "455696502426-duk1dp48c6jupc0fqg18bvvd3pt91qt3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
