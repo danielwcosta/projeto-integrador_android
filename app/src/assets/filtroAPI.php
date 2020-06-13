@@ -15,9 +15,9 @@ function pegandoJson($url){
 }
 
 $arrayBrasilA = pegandoJson($urlBrasilA);
-$arrayBrasilB = pegandoJson($urlBrasilB);
-$arrayInglaterra = pegandoJson($urlInglaterra);
-$arrayAlemanha = pegandoJson($urlAlemanha);
+$arrayBoJson($urlInglaterra);
+$arrayAlemanha = pegandoJson(rasilB = pegandoJson($urlBrasilB);
+                             $arrayInglaterra = pegand$urlAlemanha);
 $arrayFranca = pegandoJson($urlFranca);
 $arrayEspanha = pegandoJson($urlEspanha);
 $arrayItalia = pegandoJson($urlItalia);
@@ -48,7 +48,7 @@ foreach($arrayTimes as $key=>$time){
         'strInstagram'      =>  $time->strInstagram,
         'strDescriptionPT'  =>  $time->strDescriptionPT,
         'strYoutube'        =>  $time->strYoutube,
-        'strNull'           =>  null
+        'strNull'           =>  ""
   );
   }
 

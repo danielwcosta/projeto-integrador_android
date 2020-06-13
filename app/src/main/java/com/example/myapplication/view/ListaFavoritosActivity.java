@@ -21,7 +21,7 @@ import java.util.List;
 
 public class ListaFavoritosActivity extends AppCompatActivity {
 
-    private Button btnAddTime, btnRemoveTime;
+    private Button btnAddTime;
     private ImageView setaVoltar;
 
     private RecyclerView recyclerView;
@@ -38,11 +38,7 @@ public class ListaFavoritosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_favoritos);
 
-        recyclerView = findViewById(R.id.lista_favoritos_recycler_view_id);
-
-        btnAddTime = findViewById(R.id.lista_favoritos_add_time_id);
-        btnRemoveTime = findViewById(R.id.lista_favoritos_remover_time_id);
-        setaVoltar = findViewById(R.id.lista_favoritos_seta_voltar_id);
+        geraViews();
 
         layoutManager = new GridLayoutManager(this,2);
         adapter = new ListaFavoritosAdapter(addTime());
@@ -65,15 +61,14 @@ public class ListaFavoritosActivity extends AppCompatActivity {
             }
         });
 
-        //carregaFragment(new TimeFavoritoFragment());
     }
 
-//    public void carregaFragment(Fragment fragment){
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//        fragmentTransaction.replace(R.id.lista_favoritos_containerfrag_id, fragment);
-//        fragmentTransaction.commit();
-//    }
+    private void geraViews() {
+        recyclerView = findViewById(R.id.procurar_favoritos_recycler_view_id);
+        btnAddTime = findViewById(R.id.lista_favoritos_add_time_id);
+        setaVoltar = findViewById(R.id.lista_favoritos_seta_voltar_id);
+    }
+
 
     private static List<Time> addTime(){
         List<Time> timesList = new ArrayList<>();

@@ -6,8 +6,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.example.myapplication.model.Time;
@@ -16,6 +18,7 @@ public class TimeFavoritoActivity extends AppCompatActivity {
 
     private TextView nomeTime;
     private ImageView imgEscudo,setaVoltar;
+    private Button removeFavorito;
 
     private Activity activity = this;
 
@@ -28,6 +31,7 @@ public class TimeFavoritoActivity extends AppCompatActivity {
         nomeTime = findViewById(R.id.time_favorito_nome_id);
         imgEscudo = findViewById(R.id.time_favorito_escudo_img_id);
         setaVoltar = findViewById(R.id.time_favorito_seta_voltar_id);
+        removeFavorito = findViewById(R.id.time_favorito_removerfav_btn_id);
 
         if(getIntent()!=null){
             Time time = getIntent().getExtras().getParcelable("time");
@@ -43,6 +47,12 @@ public class TimeFavoritoActivity extends AppCompatActivity {
             }
         });
 
+        removeFavorito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(activity, "Time removido dos favoritos", Toast.LENGTH_LONG).show();
 
+            }
+        });
     }
 }

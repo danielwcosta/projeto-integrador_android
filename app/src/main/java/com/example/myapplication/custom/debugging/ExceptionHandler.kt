@@ -1,7 +1,6 @@
 package debugging
 
 import android.content.Intent
-import android.os.Build
 import android.os.Build.*
 import android.os.Build.VERSION.*
 import android.os.Process.killProcess
@@ -9,7 +8,7 @@ import android.os.Process.myPid
 import base.ActBase.Companion.currentActivity
 import com.example.myapplication.BuildConfig.APPLICATION_ID
 import com.example.myapplication.R
-import com.example.myapplication.debugging.ActException
+import com.example.myapplication.custom.debugging.ActException
 import java.io.PrintWriter
 import java.io.StringWriter
 

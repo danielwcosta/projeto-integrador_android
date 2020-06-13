@@ -2,19 +2,14 @@ package com.example.myapplication.view
 
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import base.ActBind
-import com.example.myapplication.R
-import com.example.myapplication.custom.hideKeyBoard
 import com.example.myapplication.custom.update
 import com.example.myapplication.databinding.ActivityCadastroBinding
-import com.example.myapplication.model.DatabaseBuilder
+import com.example.myapplication.data.DatabaseBuilder
 import com.example.myapplication.model.Usuario
-import kotlinx.android.synthetic.main.activity_cadastro.*
 
 class CadastroActivity : ActBind<ActivityCadastroBinding>() {
 
@@ -48,7 +43,7 @@ class CadastroActivity : ActBind<ActivityCadastroBinding>() {
                     cadastroSenhaId.text.toString()
             )
             accessUsuario.inserir(usuario)
-            usuario.apply { toast("CREATE\n\n$nomeCompleto\n$user\n$email ") }
+            usuario.apply { toast("Usuário: $nomeCompleto\n$user\n$email\n\n Cadastrado com sucesso!! ") }
             usuarios.update(accessUsuario.puxaTodaLista())
             val loginIntent = Intent(activity, LoginActivity::class.java)
             startActivity(loginIntent)

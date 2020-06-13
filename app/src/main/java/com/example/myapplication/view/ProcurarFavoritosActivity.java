@@ -1,99 +1,131 @@
 package com.example.myapplication.view;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.myapplication.adapter.ListaAddFavoritosAdapter;
-import com.example.myapplication.fragment.FavoritosEscudoFragment;
+import com.example.myapplication.ViewModel.ViewModelTeam;
+import com.example.myapplication.adapter.ProcurarFavoritosAdapter;
 import com.example.myapplication.R;
-import com.example.myapplication.model.Time;
+import com.example.myapplication.fragment.PerguntaFragment;
+import com.example.myapplication.model.Team;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProcurarFavoritosActivity extends AppCompatActivity {
+public class ProcurarFavoritosActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private FloatingActionButton btnAddTime;
     private ImageView setaVoltar;
+    private Spinner spinner;
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     //private ListaFavoritosAdapter adapter;
-    private ListaAddFavoritosAdapter adapter;
-    private List<Time> timeList = new ArrayList<>();
+    private ProcurarFavoritosAdapter adapter;
+    private List<Team> timeList = new ArrayList<>();
 
     private Activity activity=this;
     private FragmentManager fragmentManager;
+
+    private ViewModelTeam viewModelTeam;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_procurar_favoritos);
 
-        recyclerView = findViewById(R.id.lista_add_favoritos_recycler_view_id);
+        geraViews();
 
-        btnAddTime = findViewById(R.id.procurar_favorito_floatingActionButton_id);
-        setaVoltar = findViewById(R.id.procurar_favoritos_seta_voltar_id);
+        configuraSpinner();
 
         layoutManager = new GridLayoutManager(this,2);
-        adapter = new ListaAddFavoritosAdapter(addTime());
+        adapter = new ProcurarFavoritosAdapter(timeList);
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
-        btnAddTime.setOnClickListener((new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(activity, "Time adicionado a lista de favoritos.", Toast.LENGTH_LONG).show();
-                Intent listaFavoritosIntent = new Intent(activity,ListaFavoritosActivity.class);
-                startActivity(listaFavoritosIntent);
-            }
-        }));
-        setaVoltar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        viewModelTeam.getListTeam().observe(this,teams -> adapter.setUpdate(teams));
 
-
-        //carregaFragment(new FavoritosEscudoFragment());
+        setaVoltar.setOnClickListener(v -> onBackPressed());
 
     }
 
-//    public void carregaFragment(Fragment fragment){
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//        fragmentTransaction.replace(R.id.lista_add_favoritos_containerfrag_id, fragment);
-//        //fragmentTransaction.replace(R.id.lista_favoritos_containerfrag_id, fragment);
-//        fragmentTransaction.commit();
-//    }
+    private void configuraSpinner() {
+        ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(activity,R.array.lista_paises,android.R.layout.simple_spinner_item);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(spinnerAdapter);
+        spinner.setOnItemSelectedListener(this);
+    }
 
-    private static List<Time> addTime(){
-        List<Time> timesList = new ArrayList<>();
+    private void geraViews() {
+        recyclerView = findViewById(R.id.procurar_favoritos_recycler_view_id);
+        setaVoltar = findViewById(R.id.procurar_favoritos_seta_voltar_id);
+        viewModelTeam = ViewModelProviders.of(this).get(ViewModelTeam.class);
+        spinner =  findViewById(R.id.procurar_favoritos_spinner_pais_id);
+    }
 
-        timesList.add(new Time(R.drawable.time_escudo,"São Paulo Futebol Clube"));
-        timesList.add(new Time(R.drawable.time_escudo2,"Ceará"));
-        timesList.add(new Time(R.drawable.time_escudo3,"Poços de Caldas"));
-        timesList.add(new Time(R.drawable.time_escudo4,"Sei la o nome"));
-        timesList.add(new Time(R.drawable.time_escudo5,"Chapecoense"));
-        timesList.add(new Time(R.drawable.time_escudo5,"Chapecoense"));
-        timesList.add(new Time(R.drawable.time_escudo5,"Chapecoense"));
-        timesList.add(new Time(R.drawable.time_escudo5,"Chapecoense"));
-        timesList.add(new Time(R.drawable.time_escudo5,"Chapecoense"));
 
-        return timesList;
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String text = parent.getItemAtPosition(position).toString();
+
+        if(text.equals("Selecione um país...")){
+            adapter.clearApplications();
+        }
+        if(text.equals("Brasil")){
+            adapter.clearApplications();
+            viewModelTeam.getTeamsLeague(4351);//Brasil Serie A
+
+            Handler handler = new Handler();
+
+            handler.postDelayed(() -> {
+            viewModelTeam.getTeamsLeague(4404);//Brasil Serie B
+            }, 2000);
+        }
+        if(text.equals("Inglaterra")){
+            adapter.clearApplications();
+            viewModelTeam.getTeamsLeague(4328);
+        }
+        if(text.equals("Alemanha")){
+            adapter.clearApplications();
+            viewModelTeam.getTeamsLeague(4331);
+        }
+        if(text.equals("França")){
+            adapter.clearApplications();
+            viewModelTeam.getTeamsLeague(4334);
+        }
+        if(text.equals("Espanha")){
+            adapter.clearApplications();
+            viewModelTeam.getTeamsLeague(4335);
+        }
+        if(text.equals("Itália")){
+            adapter.clearApplications();
+            viewModelTeam.getTeamsLeague(4332);
+        }
+        if(text.equals("Argentina")){
+            adapter.clearApplications();
+            viewModelTeam.getTeamsLeague(4406);
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+        adapter.clearApplications();
+
     }
 }

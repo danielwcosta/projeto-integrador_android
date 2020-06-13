@@ -1,9 +1,10 @@
-package com.example.myapplication.model
+package com.example.myapplication.data
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.myapplication.model.Usuario
 
 @Database(
     entities = [Usuario::class],
@@ -21,7 +22,8 @@ object DatabaseBuilder {
     private var instance: AppDatabase? = null
 
     @JvmStatic
-    fun getAppDatabase(context: Context) = instance ?: build(context)
+    fun getAppDatabase(context: Context) = instance
+            ?: build(context)
 
     private fun build(context: Context): AppDatabase {
         val database = Room.databaseBuilder(

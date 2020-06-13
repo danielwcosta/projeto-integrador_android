@@ -1,6 +1,7 @@
-package com.example.myapplication.model
+package com.example.myapplication.data
 
 import androidx.room.*
+import com.example.myapplication.model.Usuario
 
 @Dao
 interface UsuarioDao {

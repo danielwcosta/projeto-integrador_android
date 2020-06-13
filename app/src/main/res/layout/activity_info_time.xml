@@ -4,16 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.TimeFavoritoActivity"
+    tools:context=".view.InfoTimeActivity"
+    android:orientation="vertical"
     android:background="@drawable/grama_textura">
     <ImageView
-        android:id="@+id/time_favorito_seta_voltar_id"
+        android:id="@+id/info_time_seta_voltar_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         app:srcCompat="@drawable/ic_arrow_back_sob_pressao_24dp"
         />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,9 +28,9 @@
 
 
 
-<!--            strTeam-->
+            <!--            strTeam-->
             <TextView
-                android:id="@+id/time_favorito_nome_id"
+                android:id="@+id/info_time_nome_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="São Paulo F. C."
@@ -36,50 +38,50 @@
                 android:textSize="40sp"
                 android:textAlignment="center"
                 android:textColor="@color/colorText"
-               />
+                />
             <!--            strTeamBadge-->
             <ImageView
-                android:id="@+id/time_favorito_escudo_img_id"
+                android:id="@+id/info_time_escudo_img_id"
                 android:layout_width="250dp"
                 android:layout_height="250dp"
                 android:src="@drawable/time_escudo"
                 android:layout_gravity="center"
                 />
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/time_favorito_info1_id"
+                android:id="@+id/info_time_info1_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/textbox_shape">
 
                 <!--                strCountry-->
                 <TextView
-                android:id="@+id/time_favorito_paistag_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="País de origem: "
-                android:textSize="20sp"
-                android:textAlignment="gravity"
-                android:textColor="@color/colorTextWhite"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@id/time_favorito_info1_id"
-                app:layout_constraintTop_toTopOf="@id/time_favorito_info1_id"
-               />
+                    android:id="@+id/info_time_paistag_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="País de origem: "
+                    android:textSize="20sp"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/colorTextWhite"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/info_time_info1_id"
+                    app:layout_constraintTop_toTopOf="@id/info_time_info1_id"
+                    />
                 <TextView
-                android:id="@+id/time_favorito_pais_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Brasil"
-                android:textSize="20sp"
-                android:textAlignment="gravity"
-                android:textStyle="italic"
-                android:textColor="@color/colorTextWhite"
-                app:layout_constraintStart_toEndOf="@id/time_favorito_paistag_id"
-                app:layout_constraintTop_toTopOf="@id/time_favorito_info1_id"
-               />
+                    android:id="@+id/info_time_pais_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Brasil"
+                    android:textSize="20sp"
+                    android:textAlignment="gravity"
+                    android:textStyle="italic"
+                    android:textColor="@color/colorTextWhite"
+                    app:layout_constraintStart_toEndOf="@id/info_time_paistag_id"
+                    app:layout_constraintTop_toTopOf="@id/info_time_info1_id"
+                    />
 
                 <!--                strStadiumLocation-->
                 <TextView
-                    android:id="@+id/time_favorito_cidadetag_id"
+                    android:id="@+id/info_time_cidadetag_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Cidade de origem: "
@@ -87,26 +89,27 @@
                     android:textAlignment="gravity"
                     android:textColor="@color/colorTextWhite"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/time_favorito_info1_id"
-                    app:layout_constraintTop_toBottomOf="@id/time_favorito_paistag_id"
+                    app:layout_constraintStart_toStartOf="@id/info_time_info1_id"
+                    app:layout_constraintTop_toBottomOf="@id/info_time_paistag_id"
                     />
 
                 <TextView
-                    android:id="@+id/time_favorito_cidade_id"
+                    android:id="@+id/info_time_cidade_id"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="São Paulo"
-                    android:textSize="20sp"
                     android:textAlignment="gravity"
-                    android:textStyle="italic"
                     android:textColor="@color/colorTextWhite"
-                    app:layout_constraintStart_toEndOf="@id/time_favorito_cidadetag_id"
-                    app:layout_constraintTop_toBottomOf="@id/time_favorito_pais_id"
-                    />
+                    android:textSize="20sp"
+                    android:textStyle="italic"
+                    app:layout_constraintBottom_toTopOf="@id/info_time_estadiotag_id"
+                    app:layout_constraintStart_toEndOf="@id/info_time_cidadetag_id"
+                    app:layout_constraintTop_toBottomOf="@id/info_time_pais_id"
+                    tools:ignore="UnknownId" />
 
                 <!--                strStadium-->
                 <TextView
-                    android:id="@+id/time_favorito_estadiotag_id"
+                    android:id="@+id/info_time_estadiotag_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Nome do estádio: "
@@ -114,12 +117,12 @@
                     android:textAlignment="gravity"
                     android:textColor="@color/colorTextWhite"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/time_favorito_info1_id"
-                    app:layout_constraintTop_toBottomOf="@id/time_favorito_cidadetag_id"
+                    app:layout_constraintStart_toStartOf="@id/info_time_info1_id"
+                    app:layout_constraintTop_toBottomOf="@id/info_time_cidadetag_id"
                     />
 
                 <TextView
-                    android:id="@+id/time_favorito_estadio_id"
+                    android:id="@+id/info_time_estadio_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Morumbi"
@@ -127,13 +130,13 @@
                     android:textAlignment="gravity"
                     android:textStyle="italic"
                     android:textColor="@color/colorTextWhite"
-                    app:layout_constraintStart_toEndOf="@id/time_favorito_estadiotag_id"
-                    app:layout_constraintTop_toBottomOf="@id/time_favorito_cidade_id"
+                    app:layout_constraintStart_toEndOf="@id/info_time_estadiotag_id"
+                    app:layout_constraintTop_toBottomOf="@id/info_time_cidade_id"
                     />
 
                 <!--                intStadiumCapacity-->
                 <TextView
-                    android:id="@+id/time_favorito_capacidadeestadiotag_id"
+                    android:id="@+id/info_time_capacidadeestadiotag_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Capacidade do estádio: "
@@ -141,12 +144,12 @@
                     android:textAlignment="gravity"
                     android:textColor="@color/colorTextWhite"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/time_favorito_info1_id"
-                    app:layout_constraintTop_toBottomOf="@id/time_favorito_estadiotag_id"
+                    app:layout_constraintStart_toStartOf="@id/info_time_info1_id"
+                    app:layout_constraintTop_toBottomOf="@id/info_time_estadiotag_id"
                     />
 
                 <TextView
-                    android:id="@+id/time_favorito_capacidadeestadio_id"
+                    android:id="@+id/info_time_capacidadeestadio_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="67000"
@@ -154,13 +157,13 @@
                     android:textAlignment="gravity"
                     android:textStyle="italic"
                     android:textColor="@color/colorTextWhite"
-                    app:layout_constraintStart_toEndOf="@id/time_favorito_capacidadeestadiotag_id"
-                    app:layout_constraintTop_toBottomOf="@id/time_favorito_estadiotag_id"
+                    app:layout_constraintStart_toEndOf="@id/info_time_capacidadeestadiotag_id"
+                    app:layout_constraintTop_toBottomOf="@id/info_time_estadiotag_id"
                     />
 
                 <!--                intFormedYear-->
                 <TextView
-                    android:id="@+id/time_favorito_anofundacaotag_id"
+                    android:id="@+id/info_time_anofundacaotag_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Ano fundação: "
@@ -168,12 +171,12 @@
                     android:textAlignment="gravity"
                     android:textColor="@color/colorTextWhite"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/time_favorito_info1_id"
-                    app:layout_constraintTop_toBottomOf="@id/time_favorito_capacidadeestadiotag_id"
+                    app:layout_constraintStart_toStartOf="@id/info_time_info1_id"
+                    app:layout_constraintTop_toBottomOf="@id/info_time_capacidadeestadiotag_id"
                     />
 
                 <TextView
-                    android:id="@+id/time_favorito_anofundacao_id"
+                    android:id="@+id/info_time_anofundacao_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1930"
@@ -181,13 +184,13 @@
                     android:textAlignment="gravity"
                     android:textStyle="italic"
                     android:textColor="@color/colorTextWhite"
-                    app:layout_constraintStart_toEndOf="@id/time_favorito_anofundacaotag_id"
-                    app:layout_constraintTop_toBottomOf="@id/time_favorito_capacidadeestadio_id"
+                    app:layout_constraintStart_toEndOf="@id/info_time_anofundacaotag_id"
+                    app:layout_constraintTop_toBottomOf="@id/info_time_capacidadeestadio_id"
                     />
 
                 <!--                strWebsite-->
                 <TextView
-                    android:id="@+id/time_favorito_websitetag_id"
+                    android:id="@+id/info_time_websitetag_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Website: "
@@ -195,12 +198,12 @@
                     android:textAlignment="gravity"
                     android:textColor="@color/colorTextWhite"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/time_favorito_info1_id"
-                    app:layout_constraintTop_toBottomOf="@id/time_favorito_anofundacaotag_id"
+                    app:layout_constraintStart_toStartOf="@id/info_time_info1_id"
+                    app:layout_constraintTop_toBottomOf="@id/info_time_anofundacaotag_id"
                     />
 
                 <TextView
-                    android:id="@+id/time_favorito_website_id"
+                    android:id="@+id/info_time_website_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="www.saopaulofc.net"
@@ -208,14 +211,14 @@
                     android:textAlignment="gravity"
                     android:textStyle="italic"
                     android:textColor="@color/colorTextWhite"
-                    app:layout_constraintStart_toEndOf="@id/time_favorito_websitetag_id"
-                    app:layout_constraintTop_toBottomOf="@id/time_favorito_anofundacao_id"
+                    app:layout_constraintStart_toEndOf="@id/info_time_websitetag_id"
+                    app:layout_constraintTop_toBottomOf="@id/info_time_anofundacao_id"
                     />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--            strTeamJersey-->
+            <!--            strTeamJersey-->
             <ImageView
-                android:id="@+id/time_favorito_camisa_img_id"
+                android:id="@+id/info_time_camisa_img_id"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_margin="10dp"
@@ -225,7 +228,7 @@
 
             <!--            strStadiumThumb-->
             <ImageView
-                android:id="@+id/time_favorito_estadio_img_id"
+                android:id="@+id/info_time_estadio_img_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/time_estadio"
@@ -240,9 +243,9 @@
                 android:textColor="@color/colorText"
                 />
 
-<!--            strDescriptionPT-->
+            <!--            strDescriptionPT-->
             <TextView
-                android:id="@+id/time_favorito_info2_id"
+                android:id="@+id/info_time_info2_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
@@ -251,13 +254,13 @@
                 android:textAlignment="gravity"
                 android:textColor="@color/colorTextWhite"
                 android:background="@drawable/textbox_shape"
-/>
+                />
             <Button
-                android:id="@+id/time_favorito_removerfav_btn_id"
+                android:id="@+id/info_time_addfavorito_btn_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/buttonshape"
-                android:text="@string/remove_time"
+                android:text="@string/add_time"
                 android:textAllCaps="false"
                 android:textColor="@color/colorTextButtons"
                 android:textSize="20sp"
@@ -267,4 +270,5 @@
                 />
         </LinearLayout>
     </ScrollView>
+
 </FrameLayout>

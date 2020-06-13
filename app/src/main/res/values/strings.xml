@@ -16,7 +16,8 @@
     <string name="times_favoritos">Times favoritos</string>
     <string name="lista_dos_seus_times_favoritos">Lista dos seus times favoritos</string>
     <string name="remover_time">Remover time</string>
-    <string name="add_time">Add time</string>
+    <string name="add_time">Adicionar aos favoritos</string>
+    <string name="remove_time">Remover dos favoritos</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="info_time1">Mussum Ipsum, cacilds vidis litro abertis. In elementis mé pra quem é amistosis quis leo. Em pé sem cair, deitado sem dormir, sentado sem cochilar e fazendo pose. Interagi no mé, cursus quis, vehicula ac nisi. A ordem dos tratores não altera o pão duris.</string>
     <string name="info_time2">São Paulo Futebol Clube (conhecido apenas por São Paulo e cujo acrônimo é SPFC) é uma associação esportiva brasileira fundada em 1930 e refundada em 1935.2 No futebol, o clube é um dos maiores vencedores do Brasil e um dos mais bem sucedidos, sendo que, dentre seus principais títulos, destacam-se os seis Campeonatos Brasileiros, as três Copas Libertadores, os três Campeonatos Mundiais (duas Copas Intercontinentais e uma Copa do Mundo de Clubes da FIFA), e os vinte e um Campeonatos Paulistas conquistados.3 Quanto a títulos internacionais, o São Paulo, com 12 conquistas, é o terceiro time da América do Sul com o maior número de troféus, ficando atrás somente de Boca Juniors e Independiente. A agremiação também possui tradição em outros esportes que não o futebol, como no atletismo, onde seu atleta Adhemar Ferreira da Silva foi o primeiro bicampeão olímpico do país e quebrou recordes mundiais, os quais são responsáveis pelas duas estrelas douradas no escudo do clube.</string>
@@ -24,7 +25,7 @@
     <string name="camisa">camisa:</string>
     <string name="estadio">estadio:</string>
     <string name="favoritos">Favoritos</string>
-    <string name="subtitulo_time_favorito">Escolha o seu time favorito</string>
+    <string name="subtitulo_time_favorito">Procure seu time favorito</string>
     <string name="pais">Brasil</string>
     <string name="liga">Brasileirão</string>
     <string name="escolha_o_pais">Escolha o País</string>
@@ -59,12 +60,23 @@
     <string name="login_facebook">Login Facebook</string>
     <string name="login_google">Login Google</string>
     <string name="sobre">Sobre</string>
+    <string name="brasil">Brasil</string>
+    <string name="inglaterra">Inglaterra</string>
+    <string name="alemanha">Alemanha</string>
+    <string name="franca">França</string>
+    <string name="espanha">Espanha</string>
+    <string name="italia">Itália</string>
+    <string name="argentina">Argentina</string>
+    <string name="selecione_pais">Selecione um país...</string>
 
-    <string-array name="lista_times_favoritos">
-        <item>São Paulo Futebol Clube</item>
-        <item>SPFC</item>
-        <item>Tricolor do Morumbi</item>
-        <item>Tri-Mundial</item>
-        <item>Tri-Hexa Brasileiro</item>
+    <string-array name="lista_paises">
+        <item>@string/selecione_pais</item>
+        <item>@string/brasil</item>
+        <item>@string/inglaterra</item>
+        <item>@string/alemanha</item>
+        <item>@string/franca</item>
+        <item>@string/espanha</item>
+        <item>@string/italia</item>
+        <item>@string/argentina</item>
     </string-array>
 </resources>

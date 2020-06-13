@@ -1,4 +1,4 @@
-package com.example.myapplication.debugging;
+package com.example.myapplication.custom.debugging;
 
 import android.os.Bundle;
 import android.view.View;

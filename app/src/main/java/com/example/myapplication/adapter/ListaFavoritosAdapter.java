@@ -39,7 +39,6 @@ public class ListaFavoritosAdapter extends RecyclerView.Adapter<ListaFavoritosVi
             @Override
             public void onClick(View v) {
                 Context context = v.getContext();
-                Toast.makeText(context,time.getNomeTime(),Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, TimeFavoritoActivity.class);
                 intent.putExtra("time",time);
                 context.startActivity(intent);

@@ -15,16 +15,16 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         app:srcCompat="@drawable/ic_arrow_back_sob_pressao_24dp" />
-    <TextView
-        android:id="@+id/procurar_favoritos_titulo_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/favoritos"
-        android:textSize="40dp"
-        android:textColor="@color/colorText"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:gravity="center"/>
+<!--    <TextView-->
+<!--        android:id="@+id/procurar_favoritos_titulo_id"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/favoritos"-->
+<!--        android:textSize="40dp"-->
+<!--        android:textColor="@color/colorText"-->
+<!--        android:textStyle="bold"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:gravity="center"/>-->
     <TextView
         android:id="@+id/procurar_favoritos_subtitulo_id"
         android:layout_width="wrap_content"
@@ -33,97 +33,38 @@
         android:layout_marginBottom="10dp"
         android:text="@string/subtitulo_time_favorito"
         android:textColor="@color/colorText"
-        android:textSize="20dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:layout_gravity="center"
         android:gravity="center"/>
 
-    <LinearLayout
+    <Spinner
+        android:id="@+id/procurar_favoritos_spinner_pais_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="20dp"
-        android:layout_marginHorizontal="20dp"
-        android:background="@drawable/textbox_shape">
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/procurar_favoritos_box_pais_id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/escolha_o_pais"
-        app:hintTextColor="@color/colorTextWhite"
-        android:theme="@style/StyledTilEditText">
+        android:layout_margin="20dp"
+        android:background="@color/colorBackgroundText"
+        android:fadeScrollbars="true"
+        android:fadingEdge="vertical"
+        android:textColor="@color/colorTextWhite" />
 
-
-        <AutoCompleteTextView
-            android:id="@+id/procurar_favoritos_pais_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/pais"
-            android:textColor="@color/colorTextWhite"/>
-        <!--        https://www.youtube.com/watch?v=on_OrrX7Nw4  Usar spinner consultar aqui para configurar dropdown-->
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/procurar_favoritos_box_time_id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Escolha o time favorito"
-        app:hintTextColor="@color/colorTextWhite"
-        android:theme="@style/StyledTilEditText">
-
-
-        <AutoCompleteTextView
-            android:id="@+id/procurar_favoritos_time_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="São Paulo F. C."
-            android:textColor="@color/colorTextWhite"/>
-        <!--        https://www.youtube.com/watch?v=on_OrrX7Nw4  Usar spinner consultar aqui para configurar dropdown-->
-
-    </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-<!--        <LinearLayout-->
-<!--            android:id="@+id/procurar_favorito_containerfrag_id"-->
-<!--            android:layout_width="200dp"-->
-<!--            android:layout_height="200dp"-->
-<!--            android:orientation="horizontal"-->
-<!--            android:layout_marginTop="40dp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent">-->
-
-<!--        </LinearLayout>-->
-
         <FrameLayout
-            android:id="@+id/lista_add_favoritos_containerfrag_id"
+            android:id="@+id/procurar_favoritos_containerfrag_id"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_weight="200"
             android:layout_margin="20dp">
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/lista_add_favoritos_recycler_view_id"
+                android:id="@+id/procurar_favoritos_recycler_view_id"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
+
         </FrameLayout>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/procurar_favorito_floatingActionButton_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:clickable="true"
-            app:backgroundTint="@color/colorBtnStart"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/ic_add_white_24dp" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
