@@ -59,6 +59,7 @@
     <string name="nao_tem_conta">Ainda não tem conta?!</string>
     <string name="login_facebook">Login Facebook</string>
     <string name="login_google">Login Google</string>
+    <string name="logoff_google">Logoff Google</string>
     <string name="sobre">Sobre</string>
     <string name="brasil">Brasil</string>
     <string name="inglaterra">Inglaterra</string>

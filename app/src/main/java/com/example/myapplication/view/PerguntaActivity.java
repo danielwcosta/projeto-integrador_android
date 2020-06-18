@@ -27,7 +27,6 @@ public class PerguntaActivity extends AppCompatActivity implements PerguntaActiv
 
     private Button  btnResponder;
     private ImageView btnSair;
-    private Activity activity = this;
     private FragmentManager fragmentManager;
     private ProgressBar progressBar;
 
@@ -37,24 +36,28 @@ public class PerguntaActivity extends AppCompatActivity implements PerguntaActiv
         setContentView(R.layout.activity_pergunta);
 
         carregaFragment(new PerguntaFragment());
-        ProgressBar progressBar = (ProgressBar) findViewById(R.id.PerguntaActivity_progress_bar);
-        ObjectAnimator progressAnimator = ObjectAnimator.ofInt(progressBar, "progress", 100, 0);
 
-        startAnimation(progressAnimator);
+
+        startAnimation();
 
         btnSair = findViewById(R.id.PerguntaActivity_seta_voltar_id);
         btnSair.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                endAnimation(progressAnimator);
-                Intent mainIntent = new Intent(activity, MainActivity.class);
-                mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(mainIntent);
+                onBackPressed();
+
                 }
         }));
+
     }
 
-// gera erro ao clicar no btnSair verificar
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
+    // gera erro ao clicar no btnSair verificar
 
 
 
@@ -74,8 +77,9 @@ public class PerguntaActivity extends AppCompatActivity implements PerguntaActiv
         fragmentTransaction.commit();
     }
     public void endAnimation(ObjectAnimator progressAnimator){progressAnimator.end();}
-    private void startAnimation(ObjectAnimator progressAnimator){
-
+    private void startAnimation(){
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.PerguntaActivity_progress_bar);
+        ObjectAnimator progressAnimator = ObjectAnimator.ofInt(progressBar, "progress", 100, 0);
         progressAnimator.setDuration(5000);
         progressAnimator.setInterpolator(new LinearInterpolator());
         progressAnimator.start();
@@ -88,13 +92,13 @@ public class PerguntaActivity extends AppCompatActivity implements PerguntaActiv
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                Toast.makeText(activity, "Acabou o tempo!!!!", Toast.LENGTH_SHORT).show();
- //               removeFragment(new PerguntaFragment()); // trava app qdo sai da activity
+                toast();
+                //               removeFragment(new PerguntaFragment()); // trava app qdo sai da activity
                 Handler handler = new Handler();
 
                 handler.postDelayed(() -> {
  //                   carregaFragment(new PerguntaFragment()); // trava app qdo sai da activity
-                    progressAnimator.start();
+//                    progressAnimator.start();
                 }, 2500);
 
             }
@@ -108,5 +112,9 @@ public class PerguntaActivity extends AppCompatActivity implements PerguntaActiv
             public void onAnimationRepeat(Animator animation) {
             }
         });
+    }
+
+    private void toast() {
+        Toast.makeText(this, "Acabou o tempo!!!!", Toast.LENGTH_SHORT).show();
     }
 }
