@@ -6,20 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".fragment.PerguntaFragment"
     >
+
+    <ImageView
+        android:id="@+id/PerguntaActivity_imgRespondeu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:src="@drawable/gol"
+        android:translationZ="@dimen/cardview_default_elevation"
+        tools:background="@color/colorAcertou"
+        />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
+        <TextView
+            android:id="@+id/PerguntaFragment_textViewPlacar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/acertos_3_x_3_erros"
+            android:textColor="@color/colorText"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
     <ImageView
         android:id="@+id/PerguntaFragment_imageViewPergunta"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:src="@drawable/logo"
         android:adjustViewBounds="true"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/PerguntaFragment_textViewPlacar"
         app:layout_constraintBottom_toTopOf="@+id/PerguntaFragment_textViewPergunta"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"/>
 
     <TextView
         android:id="@+id/PerguntaFragment_textViewPergunta"
@@ -38,7 +60,7 @@
 
     <Button
         android:id="@+id/PerguntaFragment_btn_resposta1"
-        android:layout_width="130dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
@@ -52,7 +74,7 @@
 
     <Button
         android:id="@+id/PerguntaFragment_btn_resposta2"
-        android:layout_width="130dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginStart="10dp"
@@ -67,7 +89,7 @@
 
     <Button
         android:id="@+id/PerguntaFragment_btn_resposta3"
-        android:layout_width="130dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="@string/resposta_3"
         android:textSize="20sp"
@@ -82,7 +104,7 @@
 
     <Button
         android:id="@+id/PerguntaFragment_btn_resposta4"
-        android:layout_width="130dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="@string/resposta_4"
         android:textSize="20sp"

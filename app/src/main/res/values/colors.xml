@@ -26,4 +26,7 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorTransparent">#00FFFFFF</color>
     <color name="colorBackgroundText">#40082500</color>
+    <color name="colorAcertou">#62FF00</color>
+    <color name="colorErrou">#FF0209</color>
+
 </resources>

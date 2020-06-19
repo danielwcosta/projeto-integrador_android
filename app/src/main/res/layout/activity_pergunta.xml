@@ -7,17 +7,17 @@
     tools:context=".view.PerguntaActivity"
     android:background="@drawable/grama_textura">
 
-    <TextView
-        android:id="@+id/PerguntaActivity_textViewPlacar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/acertos_3_x_3_erros"
-        android:textColor="@color/colorText"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <TextView-->
+<!--        android:id="@+id/PerguntaActivity_textViewPlacar"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/acertos_3_x_3_erros"-->
+<!--        android:textColor="@color/colorText"-->
+<!--        android:textSize="30dp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
     <ImageView
         android:id="@+id/PerguntaActivity_seta_voltar_id"
         android:layout_width="wrap_content"
@@ -39,7 +39,7 @@
         app:layout_constraintBottom_toTopOf="@+id/PerguntaActivity_progress_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/PerguntaActivity_textViewPlacar">
+        app:layout_constraintTop_toTopOf="parent">
 
     </FrameLayout>
     <ProgressBar

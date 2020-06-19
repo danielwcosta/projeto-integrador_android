@@ -38,16 +38,10 @@ public class PerguntaActivity extends AppCompatActivity implements PerguntaActiv
         carregaFragment(new PerguntaFragment());
 
 
-        startAnimation();
+  //      startAnimation();
 
         btnSair = findViewById(R.id.PerguntaActivity_seta_voltar_id);
-        btnSair.setOnClickListener((new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-
-                }
-        }));
+        btnSair.setOnClickListener((v -> onBackPressed()));
 
     }
 

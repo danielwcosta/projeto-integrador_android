@@ -37,7 +37,7 @@
     <string name="responder">Responder</string>
     <string name="sair">Sair</string>
     <string name="_10_seg">10 seg</string>
-    <string name="acertos_3_x_3_erros">Acertos 3 x 3 erros</string>
+    <string name="acertos_3_x_3_erros">Acertos 0 x 0 erros</string>
     <string name="regra1">1 - Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusant doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis.</string>
     <string name="regra3">3 - Sed ut error sit voluptatem accusant doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis.</string>
     <string name="regra2">2 - Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusant doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis.</string>
@@ -80,4 +80,19 @@
         <item>@string/italia</item>
         <item>@string/argentina</item>
     </string-array>
+
+    <string name="json">perguntas.json</string>
+    <string name="perguntas">perguntas</string>
+    <string name="pergunta_id">id</string>
+    <string name="pergunta_id_tipo">id_tipo</string>
+    <string name="pergunta_tipo">tipo</string>
+    <string name="pergunta_imagem">imagem</string>
+    <string name="pergunta_pergunta">pergunta</string>
+    <string name="pergunta_alternativa1">alternativa1</string>
+    <string name="pergunta_alternativa2">alternativa2</string>
+    <string name="pergunta_alternativa3">alternativa3</string>
+    <string name="pergunta_alternativa4">alternativa4</string>
+    <string name="pergunta_resposta">resposta</string>
+
+
 </resources>

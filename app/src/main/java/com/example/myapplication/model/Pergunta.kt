@@ -10,7 +10,7 @@ data class Pergunta(
         val id: Int,
         val id_tipo: Int,
         val tipo: String,
-        val imagem: String,
+        val imagem: String?,
         val pergunta: String,
         val alternativa1: String,
         val alternativa2: String,

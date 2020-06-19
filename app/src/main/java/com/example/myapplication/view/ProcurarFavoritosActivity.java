@@ -92,7 +92,6 @@ public class ProcurarFavoritosActivity extends AppCompatActivity implements Adap
             viewModelTeam.getTeamsLeague(4351);//Brasil Serie A
 
             Handler handler = new Handler();
-
             handler.postDelayed(() -> {
             viewModelTeam.getTeamsLeague(4404);//Brasil Serie B
             }, 2000);

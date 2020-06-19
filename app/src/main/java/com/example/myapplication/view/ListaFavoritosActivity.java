@@ -46,19 +46,13 @@ public class ListaFavoritosActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
-        btnAddTime.setOnClickListener((new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent procurarFavoritoIntent = new Intent(activity,ProcurarFavoritosActivity.class);
-                startActivity(procurarFavoritoIntent);
-            }
+        btnAddTime.setOnClickListener((v -> {
+            Intent procurarFavoritoIntent = new Intent(activity,ProcurarFavoritosActivity.class);
+            startActivity(procurarFavoritoIntent);
         }));
-        setaVoltar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent mainIntent = new Intent(activity,MainActivity.class);
-                startActivity(mainIntent);
-            }
+        setaVoltar.setOnClickListener(v -> {
+            Intent mainIntent = new Intent(activity,MainActivity.class);
+            startActivity(mainIntent);
         });
 
     }

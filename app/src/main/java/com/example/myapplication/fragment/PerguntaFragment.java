@@ -1,6 +1,9 @@
 package com.example.myapplication.fragment;
 
-import android.content.Intent;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 
 
@@ -8,22 +11,38 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
-import com.example.myapplication.view.PerguntaActivity;
+import com.example.myapplication.model.Pergunta;
+import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class PerguntaFragment extends Fragment {
 
-    PerguntaActivityContract perguntaActivityContract;
+    private ImageView imgPergunta,imgRespondeu;
+    private TextView txtPlacar, txtPergunta;
+    private Button btnAlternativa1, btnAlternativa2, btnAlternativa3, btnAlternativa4;
+    private List<Pergunta> listaperguntas;
+    private PerguntaFragment activity = this;
+    private boolean semDuploClick = true;
+    private int acertos = 0, erros = 0;
 
     public PerguntaFragment() {
     }
@@ -39,36 +58,208 @@ public class PerguntaFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button btnResposta1 = (Button) view.findViewById(R.id.PerguntaFragment_btn_resposta1);
-        Button btnResposta2 = (Button) view.findViewById(R.id.PerguntaFragment_btn_resposta2);
-        Button btnResposta3 = (Button) view.findViewById(R.id.PerguntaFragment_btn_resposta3);
-        Button btnResposta4 = (Button) view.findViewById(R.id.PerguntaFragment_btn_resposta4);
+        initViews(view);
 
-        respondeuCerto(btnResposta1);
-        respondeuCerto(btnResposta2);
-        respondeuErrado(btnResposta3);
-        respondeuErrado(btnResposta4);
+        criaPerguntaNaTela(view);
+
     }
 
-    private void respondeuCerto(Button button) {
-        button.setOnClickListener((new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(v.getContext(), "ACERTOOO MISERAVI!!!.", Toast.LENGTH_SHORT).show();
- //               Intent perguntaIntent = new Intent(v.getContext(), PerguntaActivity.class);
- //               startActivity(perguntaIntent);
+    @SuppressLint("SetTextI18n")
+    private void criaPerguntaNaTela(@NonNull View view) {
+        imgRespondeu.setImageResource(0);
+        imgRespondeu.setBackgroundColor(0);
+        txtPlacar.setText("Acertos " + acertos + " x " + erros + " Erros");
+        semDuploClick = true;
+        if(estaConectado(view.getContext())){carregaTodasPerguntas();} else{ carregaPerguntasOffline();}
+
+        Random aleatorio = new Random();
+        int numAleatorio = aleatorio.nextInt(listaperguntas.size());
+        String respostaCerta = listaperguntas.get(numAleatorio).getResposta();
+
+        if (!listaperguntas.get(numAleatorio).getImagem().isEmpty() ) {
+            Picasso.get().load(listaperguntas.get(numAleatorio).getImagem()).into(imgPergunta);
+            txtPergunta.setText(listaperguntas.get(numAleatorio).getPergunta());
+            btnAlternativa1.setText(listaperguntas.get(numAleatorio).getAlternativa1());
+            btnAlternativa2.setText(listaperguntas.get(numAleatorio).getAlternativa2());
+            btnAlternativa3.setText(listaperguntas.get(numAleatorio).getAlternativa3());
+            btnAlternativa4.setText(listaperguntas.get(numAleatorio).getAlternativa4());
+        }else{
+        imgPergunta.setImageResource(R.drawable.logo_app);
+        txtPergunta.setText(listaperguntas.get(numAleatorio).getPergunta());
+        btnAlternativa1.setText(listaperguntas.get(numAleatorio).getAlternativa1());
+        btnAlternativa2.setText(listaperguntas.get(numAleatorio).getAlternativa2());
+        btnAlternativa3.setText(listaperguntas.get(numAleatorio).getAlternativa3());
+        btnAlternativa4.setText(listaperguntas.get(numAleatorio).getAlternativa4());
+        }
+
+        btnAlternativa1.setOnClickListener(v -> {
+            if(semDuploClick){
+            if(listaperguntas.get(numAleatorio).getAlternativa1().equals(respostaCerta)){respondeuCerto();}else{respondeuErrado();}
+                }
+        });
+        btnAlternativa2.setOnClickListener(v -> {
+            if(semDuploClick){
+                if(listaperguntas.get(numAleatorio).getAlternativa2().equals(respostaCerta)){respondeuCerto();}else{respondeuErrado();}
+                }
+        });
+        btnAlternativa3.setOnClickListener(v -> {
+            if(semDuploClick){
+                if(listaperguntas.get(numAleatorio).getAlternativa3().equals(respostaCerta)){respondeuCerto();}else{respondeuErrado();}
+                }
+        });
+        btnAlternativa4.setOnClickListener(v -> {
+            if(semDuploClick){
+                if(listaperguntas.get(numAleatorio).getAlternativa4().equals(respostaCerta)){respondeuCerto();}else{respondeuErrado();}
+                }
+        });
+    }
+
+    private void initViews(@NonNull View view) {
+        txtPlacar = view.findViewById(R.id.PerguntaFragment_textViewPlacar);
+        imgPergunta = view.findViewById(R.id.PerguntaFragment_imageViewPergunta);
+        imgRespondeu = view.findViewById(R.id.PerguntaActivity_imgRespondeu);
+        txtPergunta = view.findViewById(R.id.PerguntaFragment_textViewPergunta);
+        btnAlternativa1 = view.findViewById(R.id.PerguntaFragment_btn_resposta1);
+        btnAlternativa2 = view.findViewById(R.id.PerguntaFragment_btn_resposta2);
+        btnAlternativa3 = view.findViewById(R.id.PerguntaFragment_btn_resposta3);
+        btnAlternativa4 = view.findViewById(R.id.PerguntaFragment_btn_resposta4);
+    }
+
+    @SuppressLint({"SetTextI18n"})
+    private void respondeuCerto() {
+        acertos++;
+        txtPlacar.setText("Acertos " + acertos + " x " + erros + " Erros");
+        imgRespondeu.setImageResource(R.drawable.gol);
+        imgRespondeu.setBackgroundColor(getResources().getColor(R.color.colorAcertou));
+        semDuploClick = false;
+        Handler handler = new Handler();
+        handler.postDelayed(() -> {
+            criaPerguntaNaTela(getView());
+        }, 1000);
             }
-        }));
-    }
-    private void respondeuErrado(Button button) {
-        button.setOnClickListener((v -> {
-            Toast.makeText(v.getContext(), "ERROOOUUU!!! Burrão .", Toast.LENGTH_SHORT).show();
-//                Intent perguntaIntent = new Intent(v.getContext(), PerguntaActivity.class);
-//                startActivity(perguntaIntent);
 
-//            perguntaActivityContract.substituiFragment(new PerguntaFragment());
-        }));
+    @SuppressLint({"SetTextI18n"})
+    private void respondeuErrado() {
+        erros++;
+        txtPlacar.setText("Acertos " + acertos + " x " + erros + " Erros");
+        imgRespondeu.setImageResource(R.drawable.defendeu);
+        imgRespondeu.setBackgroundColor(getResources().getColor(R.color.colorErrou));
+        semDuploClick = false;
+        Handler handler = new Handler();
+        handler.postDelayed(() -> {
+            criaPerguntaNaTela(getView());
+        }, 1000);
+        };
+
+
+    private String carregaJsonDoAsset(String file) {
+        String json = "";
+        try {
+            InputStream is = getContext().getAssets().open(file);
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return json;
     }
 
+    private void carregaTodasPerguntas() {
+        listaperguntas = new ArrayList<>();
+        String jsonStr = carregaJsonDoAsset(getString(R.string.json));
+        try {
+            JSONObject jsonObject = new JSONObject(jsonStr);
+            JSONArray perguntas = jsonObject.getJSONArray(getString(R.string.perguntas));
+            for (int i = 0; i < perguntas.length(); i++) {
+                JSONObject pergunta = perguntas.getJSONObject(i);
+
+                int idString = pergunta.getInt(getString(R.string.pergunta_id));
+                int idTipoString = pergunta.getInt(getString(R.string.pergunta_id_tipo));
+                String tipoString = pergunta.getString(getString(R.string.pergunta_tipo));
+                String imagemString = pergunta.getString(getString(R.string.pergunta_imagem));
+                String perguntaString = pergunta.getString(getString(R.string.pergunta_pergunta));
+                String alternativa1String = pergunta.getString(getString(R.string.pergunta_alternativa1));
+                String alternativa2String = pergunta.getString(getString(R.string.pergunta_alternativa2));
+                String alternativa3String = pergunta.getString(getString(R.string.pergunta_alternativa3));
+                String alternativa4String = pergunta.getString(getString(R.string.pergunta_alternativa4));
+                String respostaString = pergunta.getString(getString(R.string.pergunta_resposta));
+
+                listaperguntas.add(new Pergunta(
+                        idString,
+                        idTipoString,
+                        tipoString,
+                        imagemString,
+                        perguntaString,
+                        alternativa1String,
+                        alternativa2String,
+                        alternativa3String,
+                        alternativa4String,
+                        respostaString
+                ));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void carregaPerguntasOffline() {
+        listaperguntas = new ArrayList<>();
+        String jsonStr = carregaJsonDoAsset(getString(R.string.json));
+
+        try {
+            JSONObject jsonObject = new JSONObject(jsonStr);
+            JSONArray perguntas = jsonObject.getJSONArray(getString(R.string.perguntas));
+
+            for (int i = 0; i < perguntas.length();) {
+                JSONObject pergunta = perguntas.getJSONObject(i);
+
+                int idString = pergunta.getInt(getString(R.string.pergunta_id));
+                int idTipoString = pergunta.getInt(getString(R.string.pergunta_id_tipo));
+                String tipoString = pergunta.getString(getString(R.string.pergunta_tipo));
+                String imagemString = pergunta.getString(getString(R.string.pergunta_imagem));
+                String perguntaString = pergunta.getString(getString(R.string.pergunta_pergunta));
+                String alternativa1String = pergunta.getString(getString(R.string.pergunta_alternativa1));
+                String alternativa2String = pergunta.getString(getString(R.string.pergunta_alternativa2));
+                String alternativa3String = pergunta.getString(getString(R.string.pergunta_alternativa3));
+                String alternativa4String = pergunta.getString(getString(R.string.pergunta_alternativa4));
+                String respostaString = pergunta.getString(getString(R.string.pergunta_resposta));
+
+            if( tipoString.equalsIgnoreCase("strStadiumThumb")
+                || tipoString.equalsIgnoreCase("strTeamBadge")
+                || tipoString.equalsIgnoreCase("strTeamJersey")){
+                i++;
+            }else{
+                listaperguntas.add(new Pergunta(
+                        idString,
+                        idTipoString,
+                        tipoString,
+                        imagemString,
+                        perguntaString,
+                        alternativa1String,
+                        alternativa2String,
+                        alternativa3String,
+                        alternativa4String,
+                        respostaString
+                ));
+                i++;
+            }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static boolean estaConectado(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        if ( cm != null ) {
+            NetworkInfo ni = cm.getActiveNetworkInfo();
+            return ni != null && ni.isConnected();
+        }
+        return false;
+    }
 }
 

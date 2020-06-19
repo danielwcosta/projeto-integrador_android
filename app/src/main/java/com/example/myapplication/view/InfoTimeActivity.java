@@ -46,21 +46,12 @@ public class InfoTimeActivity extends ActBase  {
 
         }
 
-        setaVoltar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent procFavIntent = new Intent(activity,ProcurarFavoritosActivity.class);
-                startActivity(procFavIntent);
-            }
+        setaVoltar.setOnClickListener(v -> {
+            Intent procFavIntent = new Intent(activity,ProcurarFavoritosActivity.class);
+            startActivity(procFavIntent);
         });
 
-        addFavoritos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(activity, "Time adicionado aos favoritos", Toast.LENGTH_LONG).show();
-
-            }
-        });
+        addFavoritos.setOnClickListener(v -> Toast.makeText(activity, "Time adicionado aos favoritos", Toast.LENGTH_LONG).show());
     }
 
     private void geraViews() {
