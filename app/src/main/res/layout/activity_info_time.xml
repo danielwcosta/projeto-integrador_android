@@ -46,11 +46,13 @@
                 android:layout_height="250dp"
                 android:src="@drawable/time_escudo"
                 android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
                 />
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:id="@+id/info_time_info1_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:background="@drawable/textbox_shape">
 
                 <!--                strCountry-->
@@ -59,12 +61,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="País de origem: "
-                    android:textSize="20sp"
+                    android:textSize="22sp"
                     android:textAlignment="gravity"
                     android:textColor="@color/colorTextWhite"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/info_time_info1_id"
-                    app:layout_constraintTop_toTopOf="@id/info_time_info1_id"
+
                     />
                 <TextView
                     android:id="@+id/info_time_pais_id"
@@ -75,8 +76,8 @@
                     android:textAlignment="gravity"
                     android:textStyle="italic"
                     android:textColor="@color/colorTextWhite"
-                    app:layout_constraintStart_toEndOf="@id/info_time_paistag_id"
-                    app:layout_constraintTop_toTopOf="@id/info_time_info1_id"
+                    android:layout_marginBottom="10dp"
+
                     />
 
                 <!--                strStadiumLocation-->
@@ -85,12 +86,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Cidade de origem: "
-                    android:textSize="20sp"
+                    android:textSize="22sp"
                     android:textAlignment="gravity"
                     android:textColor="@color/colorTextWhite"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/info_time_info1_id"
-                    app:layout_constraintTop_toBottomOf="@id/info_time_paistag_id"
+
                     />
 
                 <TextView
@@ -102,10 +102,8 @@
                     android:textColor="@color/colorTextWhite"
                     android:textSize="20sp"
                     android:textStyle="italic"
-                    app:layout_constraintBottom_toTopOf="@id/info_time_estadiotag_id"
-                    app:layout_constraintStart_toEndOf="@id/info_time_cidadetag_id"
-                    app:layout_constraintTop_toBottomOf="@id/info_time_pais_id"
-                    tools:ignore="UnknownId" />
+                    android:layout_marginBottom="10dp"
+    />
 
                 <!--                strStadium-->
                 <TextView
@@ -113,12 +111,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Nome do estádio: "
-                    android:textSize="20sp"
+                    android:textSize="22sp"
                     android:textAlignment="gravity"
                     android:textColor="@color/colorTextWhite"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/info_time_info1_id"
-                    app:layout_constraintTop_toBottomOf="@id/info_time_cidadetag_id"
+
                     />
 
                 <TextView
@@ -130,8 +127,8 @@
                     android:textAlignment="gravity"
                     android:textStyle="italic"
                     android:textColor="@color/colorTextWhite"
-                    app:layout_constraintStart_toEndOf="@id/info_time_estadiotag_id"
-                    app:layout_constraintTop_toBottomOf="@id/info_time_cidade_id"
+                    android:layout_marginBottom="10dp"
+
                     />
 
                 <!--                intStadiumCapacity-->
@@ -140,12 +137,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Capacidade do estádio: "
-                    android:textSize="20sp"
+                    android:textSize="22sp"
                     android:textAlignment="gravity"
                     android:textColor="@color/colorTextWhite"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/info_time_info1_id"
-                    app:layout_constraintTop_toBottomOf="@id/info_time_estadiotag_id"
+
                     />
 
                 <TextView
@@ -157,8 +153,8 @@
                     android:textAlignment="gravity"
                     android:textStyle="italic"
                     android:textColor="@color/colorTextWhite"
-                    app:layout_constraintStart_toEndOf="@id/info_time_capacidadeestadiotag_id"
-                    app:layout_constraintTop_toBottomOf="@id/info_time_estadiotag_id"
+                    android:layout_marginBottom="10dp"
+
                     />
 
                 <!--                intFormedYear-->
@@ -167,12 +163,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Ano fundação: "
-                    android:textSize="20sp"
+                    android:textSize="22sp"
                     android:textAlignment="gravity"
                     android:textColor="@color/colorTextWhite"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/info_time_info1_id"
-                    app:layout_constraintTop_toBottomOf="@id/info_time_capacidadeestadiotag_id"
                     />
 
                 <TextView
@@ -184,8 +178,8 @@
                     android:textAlignment="gravity"
                     android:textStyle="italic"
                     android:textColor="@color/colorTextWhite"
-                    app:layout_constraintStart_toEndOf="@id/info_time_anofundacaotag_id"
-                    app:layout_constraintTop_toBottomOf="@id/info_time_capacidadeestadio_id"
+                    android:layout_marginBottom="10dp"
+
                     />
 
                 <!--                strWebsite-->
@@ -194,12 +188,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Website: "
-                    android:textSize="20sp"
+                    android:textSize="22sp"
                     android:textAlignment="gravity"
                     android:textColor="@color/colorTextWhite"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/info_time_info1_id"
-                    app:layout_constraintTop_toBottomOf="@id/info_time_anofundacaotag_id"
+
                     />
 
                 <TextView
@@ -211,10 +204,9 @@
                     android:textAlignment="gravity"
                     android:textStyle="italic"
                     android:textColor="@color/colorTextWhite"
-                    app:layout_constraintStart_toEndOf="@id/info_time_websitetag_id"
-                    app:layout_constraintTop_toBottomOf="@id/info_time_anofundacao_id"
+
                     />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
 
             <!--            strTeamJersey-->
             <ImageView

@@ -79,7 +79,8 @@ dependencies {
     // Add authentication google
     implementation 'com.google.firebase:firebase-auth:19.3.1'
 
-
+    //region OTHER
+    implementation 'com.facebook.android:facebook-login:5.15.3'
 
 }
 repositories {

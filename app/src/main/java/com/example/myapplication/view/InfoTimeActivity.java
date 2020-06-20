@@ -1,5 +1,6 @@
 package com.example.myapplication.view;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,12 +24,14 @@ public class InfoTimeActivity extends ActBase  {
 
     private Activity activity = this;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_time);
         geraViews();
+
 
         if(getIntent()!=null){
             Team time = getIntent().getExtras().getParcelable("time");
@@ -42,7 +45,10 @@ public class InfoTimeActivity extends ActBase  {
             webSite.setText(time.getStrWebsite());
             Picasso.get().load(time.getStrTeamJersey()).into(imgCamisa);
             Picasso.get().load(time.getStrStadiumThumb()).into(imgEstadio);
-            infoTime.setText(time.getStrDescriptionPT());
+
+            if(time.getStrDescriptionPT() != null){infoTime.setText(time.getStrDescriptionPT());}
+            else{infoTime.setText("Não há informações disponíveis.");
+            }
 
         }
 

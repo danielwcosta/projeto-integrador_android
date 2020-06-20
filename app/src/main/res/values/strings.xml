@@ -94,5 +94,12 @@
     <string name="pergunta_alternativa4">alternativa4</string>
     <string name="pergunta_resposta">resposta</string>
 
+    <string name="facebook_app_id">301668537537950</string>
+    <string name="fb_login_protocol_scheme">fb301668537537950</string>
+    <string name="perm_facebook">public_profile</string>
+    <string name="falha_facebook">Falha de Autenticação.</string>
+    <string name="fb_cancelado">Ação cancelada.</string>
+
+
 
 </resources>

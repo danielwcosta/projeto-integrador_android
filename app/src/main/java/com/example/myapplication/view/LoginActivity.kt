@@ -12,21 +12,37 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import com.example.myapplication.R
 import com.example.myapplication.ViewModel.ViewModelFirebaseLogin
+import com.example.myapplication.custom.dp
+import com.example.myapplication.custom.toast
+import com.example.myapplication.util.Helper
+import com.facebook.AccessToken
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.login.LoginResult
+import com.facebook.login.widget.LoginButton
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions.DEFAULT_SIGN_IN
+import com.google.android.gms.common.SignInButton
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
     private var usuario: EditText? = null
     private var senha: EditText? = null
     private var cadastro: TextView? = null
-    private var buttonLogin: Button? = null
-    private var buttonLoginFaceBook: Button? = null
-    private var buttonLoginGoogle: Button? = null
-    private var buttonLogOffGoogle: Button? = null
+    private var btnLogin: Button? = null
+    private var btnLoginFaceBook: LoginButton? = null
+    private var btnLoginGoogle: SignInButton? = null
     private val activity: Activity = this
     private val loginCode = 300
+    private val firebaseAuth: FirebaseAuth? = null
+
+    private val dp16 = 16.dp
+    private var zuckerberg = "4"
+    private val callbackManager = CallbackManager.Factory.create()
+    private val accessToken: AccessToken? get() = AccessToken.getCurrentAccessToken()
+    private val userID get() = accessToken?.userId ?: zuckerberg
 
     private val viewModel: ViewModelFirebaseLogin by lazy {
         ViewModelProviders.of(this).get(ViewModelFirebaseLogin::class.java)
@@ -44,14 +60,14 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.notifyUI = {mensagem,vaiLogar -> atualizarTela(mensagem,vaiLogar)}
+        viewModel.notifyUI = { mensagem, vaiLogar -> atualizarTela(mensagem, vaiLogar) }
         initView()
         initClickListeners()
     }
 
     private fun atualizarTela(mensagem: String, vaiLogar: Boolean) {
         Toast.makeText(activity, mensagem, Toast.LENGTH_LONG).show()
-        if (vaiLogar){
+        if (vaiLogar) {
             val mainIntent = Intent(activity, MainActivity::class.java)
             startActivity(mainIntent)
         }
@@ -59,6 +75,7 @@ class LoginActivity : AppCompatActivity() {
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        callbackManager.onActivityResult(requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)
         when (requestCode) {
             loginCode -> viewModel.logIn(data)
@@ -70,7 +87,7 @@ class LoginActivity : AppCompatActivity() {
             val cadastroIntent = Intent(activity, CadastroActivity::class.java)
             startActivity(cadastroIntent)
         }
-        buttonLogin!!.setOnClickListener { v: View? ->
+        btnLogin!!.setOnClickListener { v: View? ->
             if (editTextIsEmpty(usuario!!, senha!!)) {
                 Toast.makeText(activity, "Falta preencher usuario e senha", Toast.LENGTH_LONG).show()
             } else {
@@ -78,24 +95,51 @@ class LoginActivity : AppCompatActivity() {
                 startActivity(mainIntent)
             }
         }
-        buttonLoginFaceBook!!.setOnClickListener { v: View? ->
-            val mainIntent = Intent(activity, MainActivity::class.java)
-            startActivity(mainIntent)
+        btnLoginGoogle!!.setOnClickListener {
+            startActivityForResult(loginIntent, loginCode)
+
         }
-        buttonLoginGoogle!!.setOnClickListener { startActivityForResult(loginIntent, loginCode)
-        buttonLogOffGoogle!!.setOnClickListener{(viewModel::logOff)}
+
+        btnLoginFaceBook = LoginButton(this).apply {
+            setPadding(dp16, dp16, dp16, dp16)
+            chamaLogin()
         }
     }
+
+    private fun LoginButton.chamaLogin() {
+        registerCallback(callbackManager, facebookCallback)
+    }
+
+    private val facebookCallback = object : FacebookCallback<LoginResult> {
+
+        override fun onSuccess(result: LoginResult?) {
+            toast("SUCESSO!")
+            irParaMain(userID)
+            //fotinha.setImageFromURL(urlFotoFace(userID))
+        }
+
+        override fun onCancel() {
+            toast("CANCELÔ =(")
+        }
+
+        override fun onError(error: FacebookException?) {
+            toast("EROU!")
+        }
+    }
+    private fun irParaMain(uiid: String) {
+        Helper.salvarIdUsuario(applicationContext, uiid)
+        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+    }
+
 
     private fun initView() {
         setContentView(R.layout.activity_login)
         cadastro = findViewById(R.id.login_cadastro_id)
         usuario = findViewById(R.id.login_text_input_usuario_id)
         senha = findViewById(R.id.login_text_input_senha_id)
-        buttonLogin = findViewById(R.id.login_button_login_id)
-        buttonLoginFaceBook = findViewById(R.id.login_button_facebook_id)
-        buttonLoginGoogle = findViewById(R.id.login_button_google_id)
-        buttonLogOffGoogle = findViewById(R.id.login_button_logoff_google_id)
+        btnLogin = findViewById(R.id.login_button_login_id)
+        btnLoginFaceBook = findViewById(R.id.login_button_facebook_id)
+        btnLoginGoogle = findViewById(R.id.login_button_google_id)
     }
 
 
