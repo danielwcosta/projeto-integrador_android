@@ -54,7 +54,7 @@
     <string name="imgavatar">imgAvatar</string>
     <string name="login">Login</string>
     <string name="clique_aqui">Clique aqui!</string>
-    <string name="usuario_ou_email">Usuário ou E-mail</string>
+    <string name="usuario_ou_email">E-mail do usuário</string>
     <string name="senha">Senha</string>
     <string name="nao_tem_conta">Ainda não tem conta?!</string>
     <string name="login_facebook">Login Facebook</string>

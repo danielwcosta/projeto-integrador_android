@@ -19,11 +19,10 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.myapplication.fragment.FavoritosEscudoFragment;
-import com.example.myapplication.fragment.PerguntaActivityContract;
 import com.example.myapplication.fragment.PerguntaFragment;
 import com.example.myapplication.R;
 
-public class PerguntaActivity extends AppCompatActivity implements PerguntaActivityContract {
+public class PerguntaActivity extends AppCompatActivity {
 
     private Button  btnResponder;
     private ImageView btnSair;
@@ -62,7 +61,6 @@ public class PerguntaActivity extends AppCompatActivity implements PerguntaActiv
         fragmentTransaction.commit();
     }
 
-    @Override
     public void removeFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -72,7 +70,7 @@ public class PerguntaActivity extends AppCompatActivity implements PerguntaActiv
     }
     public void endAnimation(ObjectAnimator progressAnimator){progressAnimator.end();}
     private void startAnimation(){
-        ProgressBar progressBar = (ProgressBar) findViewById(R.id.PerguntaActivity_progress_bar);
+//        ProgressBar progressBar = (ProgressBar) findViewById(R.id.PerguntaActivity_progress_bar);
         ObjectAnimator progressAnimator = ObjectAnimator.ofInt(progressBar, "progress", 100, 0);
         progressAnimator.setDuration(5000);
         progressAnimator.setInterpolator(new LinearInterpolator());

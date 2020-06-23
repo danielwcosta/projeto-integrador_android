@@ -2,14 +2,21 @@ package com.example.myapplication.view
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import base.ActBind
 import com.example.myapplication.custom.update
-import com.example.myapplication.databinding.ActivityCadastroBinding
 import com.example.myapplication.data.DatabaseBuilder
+import com.example.myapplication.databinding.ActivityCadastroBinding
 import com.example.myapplication.model.Usuario
+import com.example.myapplication.util.*
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import java.util.*
 
 class CadastroActivity : ActBind<ActivityCadastroBinding>() {
 
@@ -19,22 +26,45 @@ class CadastroActivity : ActBind<ActivityCadastroBinding>() {
         DatabaseBuilder.getAppDatabase(this).accessUsuario()
     }
     private val usuarios: MutableList<Usuario> = mutableListOf()
+    private val fAuth = FirebaseAuth.getInstance()
+    private val fStore = FirebaseFirestore.getInstance()
+    lateinit var userID: String
+
 
     override fun ActivityCadastroBinding.onBoundView() {
         cadastroButtonCadastrarId.setOnClickListener(onCreateUsuario())
     }
     private fun ActivityCadastroBinding.onCreateUsuario() = View.OnClickListener {
-
         val checkEmail = saoIguais(cadastroEmailId, cadastroConrfimaEmailId)
         val checkSenha = saoIguais(cadastroSenhaId, cadastroConrfimaSenhaId)
+        val emailValido = emailValido(cadastroEmailId)
+        val tamanhoSenha = minCaracteres(cadastroSenhaId)
+
         if (editTextIsEmpty(cadastroNomeId, cadastroUsuarioId, cadastroEmailId,
                         cadastroConrfimaEmailId, cadastroSenhaId, cadastroConrfimaSenhaId)) {
-            Toast.makeText(activity, "Falta preencher campos.", Toast.LENGTH_LONG).show()
-        } else if (!checkEmail) {
-            Toast.makeText(activity, "Confirmar e-mail invalido.", Toast.LENGTH_LONG).show()
-        } else if (!checkSenha) {
-            Toast.makeText(activity, "Confirmar senha invalido.", Toast.LENGTH_LONG).show()
-        } else {
+            editTextEmptyError(cadastroNomeId, cadastroUsuarioId, cadastroEmailId,
+                    cadastroConrfimaEmailId, cadastroSenhaId, cadastroConrfimaSenhaId)
+
+        } else if (!checkEmail || !checkSenha || tamanhoSenha || !emailValido) {
+
+            if(!checkEmail){ cadastroEmailId.setError("Email e confirmar email não conferem")
+                cadastroConrfimaEmailId.setError("Email e confirmar email não conferem")}
+
+            if(!checkSenha){ cadastroSenhaId.setError("Senha e confirmar senha não conferem")
+                cadastroConrfimaSenhaId.setError("Senha e confirmar senha não conferem")}
+
+            if(!emailValido){
+                cadastroEmailId.setError("Este não é um e-mail valido.")
+            }
+            if(tamanhoSenha) {
+                cadastroSenhaId.setError("Campo com menos de 6 caracteres")
+            }
+
+
+        }else {
+            cadastrarFirebase(cadastroEmailId,cadastroSenhaId)
+            userID = fAuth.currentUser?.uid.toString()
+
             val usuario = Usuario(
                     0,
                     cadastroNomeId.text.toString(),
@@ -43,26 +73,33 @@ class CadastroActivity : ActBind<ActivityCadastroBinding>() {
                     cadastroSenhaId.text.toString()
             )
             accessUsuario.inserir(usuario)
-            usuario.apply { toast("Usuário: $nomeCompleto\n$user\n$email\n\n Cadastrado com sucesso!! ") }
+            usuario.apply { toast("Usuário: $nomeCompleto\n$user\n$email\n Cadastrado com sucesso!! ") }
             usuarios.update(accessUsuario.puxaTodaLista())
-            val loginIntent = Intent(activity, LoginActivity::class.java)
-            startActivity(loginIntent)
+//            val loginIntent = Intent(activity, LoginActivity::class.java)
+//            startActivity(loginIntent)
         }
 
     }
     private fun Context.toast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
+
+    private fun cadastrarFirebase(email : EditText,senha : EditText){
+
+        // register the user in firebase
+        fAuth.createUserWithEmailAndPassword(email.text.toString(), senha.text.toString()).addOnCompleteListener(OnCompleteListener<AuthResult?> { task ->
+            if (task.isSuccessful) {
+
+//                Toast.makeText(this@CadastroActivity, task.exception!!.message, Toast.LENGTH_SHORT).show()
+                userID = fAuth.currentUser?.getUid().toString()
+
+                startActivity(Intent(getApplicationContext(), MainActivity::class.java))
+            } else {
+                Toast.makeText(this@CadastroActivity, "Error ! " + task.exception!!.message, Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
 }
 
-private fun editTextIsEmpty(vararg editTexts: EditText): Boolean {
-    for (editText in editTexts) {
-        if (editText.text.toString().isEmpty()) {
-            return true
-        }
-    }
-    return false
-}
-private fun saoIguais(editText1: EditText, editText2: EditText): Boolean {
-    return editText1.text.toString() == editText2.text.toString()
-}
+
+

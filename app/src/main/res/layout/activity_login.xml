@@ -17,12 +17,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo"
+        android:layout_gravity="center_horizontal"
         />
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_marginTop="20dp"
+    android:layout_marginTop="5dp"
     android:layout_marginHorizontal="20dp"
     android:background="@drawable/textbox_shape">
     <com.google.android.material.textfield.TextInputLayout
@@ -78,6 +79,7 @@
         />
 
     <LinearLayout
+        android:id="@+id/login_container_btnlogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -92,7 +94,7 @@
         android:id="@+id/login_cadastro_sem_click_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="5dp"
         android:text="@string/nao_tem_conta"
         android:textAlignment="center"
         android:textColor="@color/colorTextWhite"
@@ -104,7 +106,7 @@
         android:id="@+id/login_cadastro_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="5dp"
         android:text="@string/clique_aqui"
         android:textAlignment="center"
         android:textColor="@color/colorText"
@@ -113,32 +115,38 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/login_container_rede_social"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_weight="1"
         android:layout_marginBottom="5dp"
+        android:orientation="vertical"
         >
-    <com.facebook.login.widget.LoginButton
-        android:id="@+id/login_button_facebook_id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="10dp"
 
-        android:layout_weight="1"
-         />
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/login_button_facebook_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/logo_facebook"
+            android:layout_gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/login_container_rede_social"/>
 
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/login_button_google_id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="10dp"
-        android:layout_weight="1"
-         />
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/login_button_google_id"
+            android:layout_width="210dp"
+            android:layout_height="33dp"
+            android:layout_weight="1"
+            android:src="@drawable/logo_google"
+            android:layout_gravity="center"
+            android:layout_marginVertical="5dp"
+            app:layout_constraintEnd_toEndOf="@id/login_button_facebook_id"
+            app:layout_constraintStart_toStartOf="@id/login_button_facebook_id"
+            app:layout_constraintTop_toBottomOf="@id/login_button_facebook_id"/>
 
     </LinearLayout>
 

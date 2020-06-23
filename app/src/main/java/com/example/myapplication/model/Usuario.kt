@@ -8,6 +8,7 @@ import androidx.room.PrimaryKey
 data class Usuario(
     @PrimaryKey(autoGenerate = true)
     var id:Int,
+
     @ColumnInfo(name = "name_complete")
     var nomeCompleto: String,
 

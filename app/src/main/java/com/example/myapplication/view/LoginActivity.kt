@@ -4,10 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import com.example.myapplication.R
@@ -15,10 +12,12 @@ import com.example.myapplication.ViewModel.ViewModelFirebaseLogin
 import com.example.myapplication.custom.dp
 import com.example.myapplication.custom.toast
 import com.example.myapplication.util.Helper
+import com.example.myapplication.util.editTextEmptyError
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
+import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.facebook.login.widget.LoginButton
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -26,6 +25,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions.DEFAULT_SIGN_IN
 import com.google.android.gms.common.SignInButton
 import com.google.firebase.auth.FirebaseAuth
+import java.util.*
 
 class LoginActivity : AppCompatActivity() {
     private var usuario: EditText? = null
@@ -49,6 +49,15 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.notifyUI = { mensagem, vaiLogar -> atualizarTela(mensagem, vaiLogar) }
+        initView()
+        initClickListeners()
+    }
+
     private val loginIntent by lazy {
         GoogleSignIn.getClient(
                 this@LoginActivity, GoogleSignInOptions.Builder(DEFAULT_SIGN_IN)
@@ -56,13 +65,6 @@ class LoginActivity : AppCompatActivity() {
                 .requestEmail()
                 .build()
         ).signInIntent
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel.notifyUI = { mensagem, vaiLogar -> atualizarTela(mensagem, vaiLogar) }
-        initView()
-        initClickListeners()
     }
 
     private fun atualizarTela(mensagem: String, vaiLogar: Boolean) {
@@ -89,7 +91,7 @@ class LoginActivity : AppCompatActivity() {
         }
         btnLogin!!.setOnClickListener { v: View? ->
             if (editTextIsEmpty(usuario!!, senha!!)) {
-                Toast.makeText(activity, "Falta preencher usuario e senha", Toast.LENGTH_LONG).show()
+                editTextEmptyError(usuario!!,senha!!)
             } else {
                 val mainIntent = Intent(activity, MainActivity::class.java)
                 startActivity(mainIntent)
@@ -100,13 +102,14 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
-        btnLoginFaceBook = LoginButton(this).apply {
+        btnLoginFaceBook =  LoginButton(this).apply {
             setPadding(dp16, dp16, dp16, dp16)
-            chamaLogin()
+            loginFacebook()
         }
+
     }
 
-    private fun LoginButton.chamaLogin() {
+    private fun LoginButton.loginFacebook() {
         registerCallback(callbackManager, facebookCallback)
     }
 
@@ -126,6 +129,8 @@ class LoginActivity : AppCompatActivity() {
             toast("EROU!")
         }
     }
+
+
     private fun irParaMain(uiid: String) {
         Helper.salvarIdUsuario(applicationContext, uiid)
         startActivity(Intent(this@LoginActivity, MainActivity::class.java))
