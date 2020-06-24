@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
+import com.example.myapplication.util.Helper;
 import com.facebook.CallbackManager;
 import com.facebook.login.LoginManager;
 
@@ -24,7 +25,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        buttonRegras = findViewById(R.id.MainActivity_buttonRegras);
+        initViews();
+
         buttonRegras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        buttonJogar = findViewById(R.id.MainActivity_buttonJogar);
         buttonJogar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        buttonTimesFavoritos = findViewById(R.id.MainActivity_buttonTimesFavoritos);
         buttonTimesFavoritos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,6 +53,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    private void initViews() {
+        buttonRegras = findViewById(R.id.MainActivity_buttonRegras);
+        buttonJogar = findViewById(R.id.MainActivity_buttonJogar);
+        buttonTimesFavoritos = findViewById(R.id.MainActivity_buttonTimesFavoritos);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -61,8 +68,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        LoginManager.getInstance().logOut();
-        Toast.makeText(activity, "Deslogou do facebook", Toast.LENGTH_LONG).show();
-
+        Helper.logout(activity);
+        Toast.makeText(activity, "Usuario deslogado.", Toast.LENGTH_LONG).show();
     }
+
+    private void logOffFaceBook() {
+        LoginManager.getInstance().logOut();
+    }
+
+
 }

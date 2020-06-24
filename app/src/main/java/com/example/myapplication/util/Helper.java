@@ -7,6 +7,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.widget.Toast;
 
+import com.example.myapplication.view.LoginActivity;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -101,17 +102,23 @@ public class Helper {
         GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(context, gso);
         return googleSignInClient;
     }
-//
-//    public static void logout(Context context){
-//        GoogleSignInClient googleSignInClient = google(context);
-//        googleSignInClient.signOut().addOnCompleteListener(task -> {
-//        });
-//        Helper.deslogarFirebase();
-//
-//        Intent intent = new Intent(context, LoginActivity.class);
-//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//        context.startActivity(intent);
-//    }
+
+    public static void logout(Context context){
+        GoogleSignInClient googleSignInClient = google(context);
+        googleSignInClient.signOut().addOnCompleteListener(task -> {
+        });
+        Helper.deslogarFirebase();
+
+        Intent intent = new Intent(context, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        context.startActivity(intent);
+    }
+    public static void deslogaLogados(Context context){
+        GoogleSignInClient googleSignInClient = google(context);
+        googleSignInClient.signOut().addOnCompleteListener(task -> {
+        });
+        Helper.deslogarFirebase();
+    }
 
     public static void notificacao(Context contexto, String sMensagem) {
         Toast toast = Toast.makeText(contexto, sMensagem, Toast.LENGTH_LONG);

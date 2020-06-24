@@ -54,21 +54,12 @@ class LoginActivity : AppCompatActivity() {
 
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Helper.deslogaLogados(activity)
         viewModel.notifyUI = { mensagem, vaiLogar -> atualizarTela(mensagem, vaiLogar) }
         initView()
         initClickListeners()
-    }
-
-    private val loginIntent by lazy {
-        GoogleSignIn.getClient(
-                this@LoginActivity, GoogleSignInOptions.Builder(DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build()
-        ).signInIntent
     }
 
     private fun atualizarTela(mensagem: String, vaiLogar: Boolean) {
@@ -78,7 +69,6 @@ class LoginActivity : AppCompatActivity() {
             startActivity(mainIntent)
         }
     }
-
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         callbackManager.onActivityResult(requestCode, resultCode, data)
@@ -102,15 +92,11 @@ class LoginActivity : AppCompatActivity() {
             }
         }
         btnLoginGoogle!!.setOnClickListener {
-            startActivityForResult(loginIntent, loginCode)
-
+            loginGoogle(loginCode)
         }
-
         btnLoginFaceBook =  LoginButton(this).apply {
-            setPadding(dp16, dp16, dp16, dp16)
             loginFacebook()
         }
-
     }
 
     private fun loginFirebase(email:TextView, senha:TextView){
@@ -127,33 +113,42 @@ class LoginActivity : AppCompatActivity() {
         })
     }
 
+    private fun loginGoogle(loginCode:Int){
+     val loginIntent by lazy {
+        GoogleSignIn.getClient(
+                this@LoginActivity, GoogleSignInOptions.Builder(DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build()
+        ).signInIntent
+    }
+        startActivityForResult(loginIntent, loginCode)
+    }
+
     private fun LoginButton.loginFacebook() {
+        val facebookCallback = object : FacebookCallback<LoginResult> {
+
+            override fun onSuccess(result: LoginResult?) {
+                toast("SUCESSO!")
+                irParaMain(userID)
+                //fotinha.setImageFromURL(urlFotoFace(userID))
+            }
+
+            override fun onCancel() {
+                toast("CANCELÔ =(")
+            }
+
+            override fun onError(error: FacebookException?) {
+                toast("EROU!")
+            }
+        }
         registerCallback(callbackManager, facebookCallback)
     }
-
-    private val facebookCallback = object : FacebookCallback<LoginResult> {
-
-        override fun onSuccess(result: LoginResult?) {
-            toast("SUCESSO!")
-            irParaMain(userID)
-            //fotinha.setImageFromURL(urlFotoFace(userID))
-        }
-
-        override fun onCancel() {
-            toast("CANCELÔ =(")
-        }
-
-        override fun onError(error: FacebookException?) {
-            toast("EROU!")
-        }
-    }
-
 
     private fun irParaMain(uiid: String) {
         Helper.salvarIdUsuario(applicationContext, uiid)
         startActivity(Intent(this@LoginActivity, MainActivity::class.java))
     }
-
 
     private fun initView() {
         setContentView(R.layout.activity_login)
@@ -164,7 +159,6 @@ class LoginActivity : AppCompatActivity() {
         btnLoginFaceBook = findViewById(R.id.login_button_facebook_id)
         btnLoginGoogle = findViewById(R.id.login_button_google_id)
     }
-
 
     companion object {
         fun editTextIsEmpty(vararg editTexts: EditText): Boolean {
