@@ -4,7 +4,10 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import com.example.myapplication.R
@@ -17,18 +20,18 @@ import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
-import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.facebook.login.widget.LoginButton
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions.DEFAULT_SIGN_IN
 import com.google.android.gms.common.SignInButton
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import java.util.*
 
 class LoginActivity : AppCompatActivity() {
-    private var usuario: EditText? = null
+    private var email: EditText? = null
     private var senha: EditText? = null
     private var cadastro: TextView? = null
     private var btnLogin: Button? = null
@@ -36,7 +39,8 @@ class LoginActivity : AppCompatActivity() {
     private var btnLoginGoogle: SignInButton? = null
     private val activity: Activity = this
     private val loginCode = 300
-    private val firebaseAuth: FirebaseAuth? = null
+    private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+
 
     private val dp16 = 16.dp
     private var zuckerberg = "4"
@@ -85,16 +89,16 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun initClickListeners() {
+
         cadastro!!.setOnClickListener { v: View? ->
             val cadastroIntent = Intent(activity, CadastroActivity::class.java)
             startActivity(cadastroIntent)
         }
-        btnLogin!!.setOnClickListener { v: View? ->
-            if (editTextIsEmpty(usuario!!, senha!!)) {
-                editTextEmptyError(usuario!!,senha!!)
+        btnLogin!!.setOnClickListener {
+            if (editTextIsEmpty(email!!, senha!!)) {
+                editTextEmptyError(email!!,senha!!)
             } else {
-                val mainIntent = Intent(activity, MainActivity::class.java)
-                startActivity(mainIntent)
+                loginFirebase(email!!, senha!!)
             }
         }
         btnLoginGoogle!!.setOnClickListener {
@@ -107,6 +111,20 @@ class LoginActivity : AppCompatActivity() {
             loginFacebook()
         }
 
+    }
+
+    private fun loginFirebase(email:TextView, senha:TextView){
+
+        val userUid = firebaseAuth?.currentUser?.uid.toString()
+        // authenticate the user
+        firebaseAuth?.signInWithEmailAndPassword(email.text.toString(), senha.text.toString())?.addOnCompleteListener(OnCompleteListener<AuthResult?> { task ->
+            if (task.isSuccessful) {
+                irParaMain(userUid)
+
+            } else {
+                Toast.makeText(this@LoginActivity, "Error ! " + task.exception!!.message, Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     private fun LoginButton.loginFacebook() {
@@ -140,7 +158,7 @@ class LoginActivity : AppCompatActivity() {
     private fun initView() {
         setContentView(R.layout.activity_login)
         cadastro = findViewById(R.id.login_cadastro_id)
-        usuario = findViewById(R.id.login_text_input_usuario_id)
+        email = findViewById(R.id.login_text_input_usuario_id)
         senha = findViewById(R.id.login_text_input_senha_id)
         btnLogin = findViewById(R.id.login_button_login_id)
         btnLoginFaceBook = findViewById(R.id.login_button_facebook_id)
