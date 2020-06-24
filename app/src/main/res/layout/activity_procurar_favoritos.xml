@@ -37,17 +37,25 @@
         android:textStyle="bold"
         android:layout_gravity="center"
         android:gravity="center"/>
-
+<LinearLayout
+    android:id="@+id/procurar_favoritos_spinner_seta_id"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_gravity="center"
+    android:background="@drawable/spinner_background"
+    >
     <Spinner
         android:id="@+id/procurar_favoritos_spinner_pais_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:background="@color/colorBackgroundText"
+        android:layout_margin="10dp"
         android:fadeScrollbars="true"
         android:fadingEdge="vertical"
-        android:textColor="@color/colorTextWhite" />
-
+        android:textColor="@color/colorTextWhite"
+        android:spinnerMode="dropdown"
+        />
+</LinearLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
