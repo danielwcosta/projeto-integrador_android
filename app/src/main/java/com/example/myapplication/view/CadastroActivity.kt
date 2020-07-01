@@ -67,6 +67,7 @@ class CadastroActivity : ActBind<ActivityCadastroBinding>() {
 
             val usuario = Usuario(
                     0,
+                    userID,
                     cadastroNomeId.text.toString(),
                     cadastroUsuarioId.text.toString(),
                     cadastroEmailId.text.toString(),

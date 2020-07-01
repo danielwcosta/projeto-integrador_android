@@ -60,14 +60,14 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <FrameLayout
-        android:id="@+id/procurar_favoritos_containerfrag_id"
+        android:id="@+id/lista_favoritos_containerfrag_id"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_weight="200"
         android:layout_margin="20dp">
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/procurar_favoritos_recycler_view_id"
+            android:id="@+id/lista_favoritos_recycler_view_id"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </FrameLayout>

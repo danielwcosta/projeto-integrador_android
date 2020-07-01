@@ -1,5 +1,9 @@
 package com.example.myapplication.repository
 
+import android.content.Context
+import androidx.lifecycle.LiveData
+import com.example.myapplication.data.DatabaseBuilder
+import com.example.myapplication.model.Team
 import com.example.myapplication.model.TeamResponse
 import com.example.myapplication.network.RetroInit
 import com.example.myapplication.network.ServiceTeam
@@ -12,5 +16,11 @@ class RepositoryTeam {
         private val initService = RetroInit(url).create(service)
 
         suspend fun getLeague(id : Int) : TeamResponse = initService.getServiceLeague(id)
+
+        private fun initDataBase(context : Context) = DatabaseBuilder.getAppDatabase(context)
+
+        suspend fun pegarTodaListaTeams(context: Context): MutableList<Team> = initDataBase(context).accessTeam().puxaTodoTeam()
+
+        suspend fun inserirTeamsNaLista(context: Context, team: Team): Unit= initDataBase(context).accessTeam().inserirTeam(team)
 
 }

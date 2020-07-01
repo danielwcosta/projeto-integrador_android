@@ -12,6 +12,9 @@ interface UsuarioDao {
     @Query("SELECT * FROM usuario where id LIKE  :id")
     fun encontrarPorId(id: Int): Usuario
 
+    @Query("SELECT * FROM usuario where uid LIKE  :uid")
+    fun procuraUserId(uid: String): Usuario
+
     @Query("SELECT COUNT(*) from usuario")
     fun contarTodos(): Int
 
@@ -23,4 +26,6 @@ interface UsuarioDao {
 
     @Update
     fun atualizar(usuario: Usuario)
+
+
 }

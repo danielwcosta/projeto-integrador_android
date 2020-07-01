@@ -15,9 +15,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
 import com.example.myapplication.R;
 
 
@@ -74,9 +71,9 @@ public class Helper {
     }
 
 
-    private static void deslogarFirebase() {
+    private static void deslogar() {
         FirebaseAuth.getInstance().signOut();
-        LoginManager.getInstance().logOut();
+        LoginManager.getInstance().logOut(); //facebook
     }
 
     public static String getString(TextInputLayout viewName) {
@@ -107,7 +104,7 @@ public class Helper {
         GoogleSignInClient googleSignInClient = google(context);
         googleSignInClient.signOut().addOnCompleteListener(task -> {
         });
-        Helper.deslogarFirebase();
+        Helper.deslogar();
 
         Intent intent = new Intent(context, LoginActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -117,7 +114,7 @@ public class Helper {
         GoogleSignInClient googleSignInClient = google(context);
         googleSignInClient.signOut().addOnCompleteListener(task -> {
         });
-        Helper.deslogarFirebase();
+        Helper.deslogar();
     }
 
     public static void notificacao(Context contexto, String sMensagem) {

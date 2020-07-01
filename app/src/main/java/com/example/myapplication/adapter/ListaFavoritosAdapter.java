@@ -11,16 +11,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.model.Team;
 import com.example.myapplication.model.Time;
 import com.example.myapplication.view.TimeFavoritoActivity;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class ListaFavoritosAdapter extends RecyclerView.Adapter<ListaFavoritosViewHolder> {
 
-    private List<Time> timeList;
+    private List<Team> timeList;
 
-    public ListaFavoritosAdapter(List<Time> timeList) {
+    public ListaFavoritosAdapter(List<Team> timeList) {
         this.timeList = timeList;
     }
 
@@ -33,8 +35,9 @@ public class ListaFavoritosAdapter extends RecyclerView.Adapter<ListaFavoritosVi
 
     @Override
     public void onBindViewHolder(@NonNull ListaFavoritosViewHolder holder, int position) {
-        final Time time = timeList.get(position);
-        holder.imgEscudoFavorito.setImageResource(time.getImgEscudo());
+        final Team time = timeList.get(position);
+
+        Picasso.get().load(time.getStrTeamBadge()).into(holder.imgEscudoFavorito);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,4 +53,5 @@ public class ListaFavoritosAdapter extends RecyclerView.Adapter<ListaFavoritosVi
     public int getItemCount() {
         return timeList.size();
     }
+
 }
