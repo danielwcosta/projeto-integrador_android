@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.R;
 import com.example.myapplication.model.Team;
 import com.example.myapplication.model.Time;
+import com.example.myapplication.view.ListaFavoritosActivity;
 import com.example.myapplication.view.TimeFavoritoActivity;
 import com.squareup.picasso.Picasso;
 
@@ -43,6 +44,7 @@ public class ListaFavoritosAdapter extends RecyclerView.Adapter<ListaFavoritosVi
             Intent intent = new Intent(context, TimeFavoritoActivity.class);
             intent.putExtra("time",time);
             context.startActivity(intent);
+            ListaFavoritosActivity.getCurrentActivity().finish();
         });
     }
 

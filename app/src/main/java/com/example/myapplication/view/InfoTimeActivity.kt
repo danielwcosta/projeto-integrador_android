@@ -43,14 +43,14 @@ class InfoTimeActivity : ActBase() {
         geraViews()
         if (intent != null) {
             val time = intent.extras!!.getParcelable<Team>("time")
-            nomeTime!!.text = time!!.strTeam
+            nomeTime.text = time!!.strTeam
             Picasso.get().load(time.strTeamBadge).into(imgEscudo)
-            nomePais!!.text = time.strCountry
-            nomeCidade!!.text = time.strStadiumLocation
-            nomeEstadio!!.text = time.strStadium
-            capacidadeEstadio!!.text = time.intStadiumCapacity
-            anoFundacao!!.text = time.intFormedYear
-            webSite!!.text = time.strWebsite
+            nomePais.text = time.strCountry
+            nomeCidade.text = time.strStadiumLocation
+            nomeEstadio.text = time.strStadium
+            capacidadeEstadio.text = time.intStadiumCapacity
+            anoFundacao.text = time.intFormedYear
+            webSite.text = time.strWebsite
             Picasso.get().load(time.strTeamJersey).into(imgCamisa)
             Picasso.get().load(time.strStadiumThumb).into(imgEstadio)
             if (time.strDescriptionPT != null) {
@@ -68,9 +68,14 @@ class InfoTimeActivity : ActBase() {
                 val time = intent.extras!!.getParcelable<Team>("time")
                 val team = Team(0, time!!.strTeam, time.strCountry, time.intStadiumCapacity, time.strStadiumLocation, time.strStadium, time.strStadiumThumb, time.strTeamBadge, time.strTeamJersey, "", time.intFormedYear, "", "", time.strWebsite, "", "", "", infoTime?.text.toString(), "")
 
-                viewModelTeam.putTimesFavorito(this, team)
-                toast("Time adicionado aos favoritos")
-                startActivity( Intent(activity, ListaFavoritosActivity::class.java))
+                var estaNoFavorito = time!!.strTeam?.let { viewModelTeam.searchTimeByName(this, it) }
+
+                if(!estaNoFavorito!!) {
+                    viewModelTeam.putTimesFavorito(this, team)
+                    toast("Time adicionado aos favoritos")
+                    startActivity(Intent(activity, ListaFavoritosActivity::class.java))
+                }else{toast("${time.strTeam} já foi adicionado anteriormente.")}
+
             }else{toast("Erro! não foi possivel adicionar aos favoritos")}
         }
     }

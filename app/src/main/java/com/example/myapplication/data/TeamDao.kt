@@ -19,6 +19,9 @@ interface TeamDao {
     @Query("SELECT * FROM team where id LIKE  :id")
     fun encontrarTeamId(id: Int): Team
 
+    @Query("SELECT * FROM team where strTeam LIKE  :strTeam")
+    fun encontrarTeamName(strTeam: String): Boolean
+
     @Query("SELECT COUNT(*) from team")
     fun contarTodosTeam(): Int
 

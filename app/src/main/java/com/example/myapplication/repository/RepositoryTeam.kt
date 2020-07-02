@@ -25,6 +25,8 @@ class RepositoryTeam {
 
         fun pegaTeamPorId(context: Context, id: Int): Team = initDataBase(context).accessTeam().encontrarTeamId(id)
 
+        fun pegaTeamPorNome(context: Context, strTeam: String): Boolean= initDataBase(context).accessTeam().encontrarTeamName(strTeam)
+
         suspend fun removerTeam(context: Context, team: Team): Unit= initDataBase(context).accessTeam().deletarTeam(team)
 
 }

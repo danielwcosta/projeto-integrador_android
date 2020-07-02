@@ -33,6 +33,7 @@ class ViewModelTeam : ViewModel() {
 
     fun searchTimeById(context: Context, id: Int):Team = repository.pegaTeamPorId(context,id)
 
+    fun searchTimeByName(context: Context, strTeam: String):Boolean = repository.pegaTeamPorNome(context,strTeam)
 
     fun removeTimesFavorito(context: Context, team: Team) = CoroutineScope(Dispatchers.IO).launch {
         repository.removerTeam(context,team)
