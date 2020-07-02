@@ -26,8 +26,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
-
             <!--            strTeam-->
             <TextView
                 android:id="@+id/info_time_nome_id"
@@ -192,7 +190,6 @@
                     android:textAlignment="gravity"
                     android:textColor="@color/colorTextWhite"
                     android:textStyle="bold"
-
                     />
 
                 <TextView

@@ -23,4 +23,8 @@ class RepositoryTeam {
 
         suspend fun inserirTeamsNaLista(context: Context, team: Team): Unit= initDataBase(context).accessTeam().inserirTeam(team)
 
+        fun pegaTeamPorId(context: Context, id: Int): Team = initDataBase(context).accessTeam().encontrarTeamId(id)
+
+        suspend fun removerTeam(context: Context, team: Team): Unit= initDataBase(context).accessTeam().deletarTeam(team)
+
 }

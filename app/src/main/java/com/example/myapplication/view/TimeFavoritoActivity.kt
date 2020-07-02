@@ -8,17 +8,17 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import base.ActBase
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.R
 import com.example.myapplication.ViewModel.ViewModelTeam
 import com.example.myapplication.custom.toast
 import com.example.myapplication.custom.viewModel
-import com.example.myapplication.data.DatabaseBuilder
 import com.example.myapplication.model.Team
+import com.example.myapplication.model.Time
 import com.squareup.picasso.Picasso
 
-class InfoTimeActivity : ActBase() {
-
+class TimeFavoritoActivity : AppCompatActivity() {
     lateinit var nomeTime: TextView
     lateinit var nomePais: TextView
     lateinit var nomeCidade: TextView
@@ -31,7 +31,7 @@ class InfoTimeActivity : ActBase() {
     lateinit var imgEscudo: ImageView
     lateinit var imgCamisa: ImageView
     lateinit var imgEstadio: ImageView
-    lateinit var addFavoritos: Button
+    lateinit var removeFavorito: Button
     private val activity: Activity = this
 
     private val viewModelTeam: ViewModelTeam by viewModel()
@@ -39,7 +39,7 @@ class InfoTimeActivity : ActBase() {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_info_time)
+        setContentView(R.layout.activity_time_favorito)
         geraViews()
         if (intent != null) {
             val time = intent.extras!!.getParcelable<Team>("time")
@@ -59,37 +59,41 @@ class InfoTimeActivity : ActBase() {
                 infoTime!!.text = "Não há informações disponíveis."
             }
         }
-        setaVoltar!!.setOnClickListener {
-            val procFavIntent = Intent(activity, ProcurarFavoritosActivity::class.java)
-            startActivity(procFavIntent)
-        }
-        addFavoritos!!.setOnClickListener { v: View? ->
+        setaVoltar.setOnClickListener(View.OnClickListener {
+            startActivity(Intent(activity, ListaFavoritosActivity::class.java))
+            finish()
+        })
+        removeFavorito.setOnClickListener(View.OnClickListener {
             if (intent != null) {
+
                 val time = intent.extras!!.getParcelable<Team>("time")
-                val team = Team(0, time!!.strTeam, time.strCountry, time.intStadiumCapacity, time.strStadiumLocation, time.strStadium, time.strStadiumThumb, time.strTeamBadge, time.strTeamJersey, "", time.intFormedYear, "", "", time.strWebsite, "", "", "", infoTime?.text.toString(), "")
+                val team = time!!.id.let { it1 -> viewModelTeam.searchTimeById(this, it1) }
 
-                viewModelTeam.putTimesFavorito(this, team)
-                toast("Time adicionado aos favoritos")
-                startActivity( Intent(activity, ListaFavoritosActivity::class.java))
-            }else{toast("Erro! não foi possivel adicionar aos favoritos")}
-        }
+                viewModelTeam.removeTimesFavorito(this,team)
+                toast("Time removido dos favoritos.")
+
+                startActivity(Intent(activity, ListaFavoritosActivity::class.java))
+                finish()
+
+            }else{toast("Erro! não foi possivel remover dos favoritos")}
+
+        })
     }
-
     private fun geraViews() {
         // TextViews
-        nomeTime = findViewById(R.id.info_time_nome_id)
-        nomePais = findViewById(R.id.info_time_pais_id)
-        nomeCidade = findViewById(R.id.info_time_cidade_id)
-        nomeEstadio = findViewById(R.id.info_time_estadio_id)
-        capacidadeEstadio = findViewById(R.id.info_time_capacidadeestadio_id)
-        anoFundacao = findViewById(R.id.info_time_anofundacao_id)
-        webSite = findViewById(R.id.info_time_website_id)
-        infoTime = findViewById(R.id.info_time_info2_id)
+        nomeTime = findViewById(R.id.time_favorito_nome_id)
+        nomePais = findViewById(R.id.time_favorito_pais_id)
+        nomeCidade = findViewById(R.id.time_favorito_cidade_id)
+        nomeEstadio = findViewById(R.id.time_favorito_estadio_id)
+        capacidadeEstadio = findViewById(R.id.time_favorito_capacidadeestadio_id)
+        anoFundacao = findViewById(R.id.time_favorito_anofundacao_id)
+        webSite = findViewById(R.id.time_favorito_website_id)
+        infoTime = findViewById(R.id.time_favorito_info2_id)
         // ImageViews
-        setaVoltar = findViewById(R.id.info_time_seta_voltar_id)
-        imgEscudo = findViewById(R.id.info_time_escudo_img_id)
-        imgCamisa = findViewById(R.id.info_time_camisa_img_id)
-        imgEstadio = findViewById(R.id.info_time_estadio_img_id)
-        addFavoritos = findViewById(R.id.info_time_addfavorito_btn_id)
+        setaVoltar = findViewById(R.id.time_favorito_seta_voltar_id)
+        imgEscudo = findViewById(R.id.time_favorito_escudo_img_id)
+        imgCamisa = findViewById(R.id.time_favorito_camisa_img_id)
+        imgEstadio = findViewById(R.id.time_favorito_estadio_img_id)
+        removeFavorito = findViewById(R.id.time_favorito_removerfav_btn_id)
     }
 }

@@ -87,11 +87,9 @@ class CadastroActivity : ActBind<ActivityCadastroBinding>() {
 
     private fun cadastrarFirebase(email : EditText,senha : EditText){
 
-        // register the user in firebase
         fAuth.createUserWithEmailAndPassword(email.text.toString(), senha.text.toString()).addOnCompleteListener(OnCompleteListener<AuthResult?> { task ->
             if (task.isSuccessful) {
 
-//                Toast.makeText(this@CadastroActivity, task.exception!!.message, Toast.LENGTH_SHORT).show()
                 userID = fAuth.currentUser?.getUid().toString()
 
                 startActivity(Intent(getApplicationContext(), MainActivity::class.java))

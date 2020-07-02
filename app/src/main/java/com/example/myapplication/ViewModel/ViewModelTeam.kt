@@ -1,15 +1,12 @@
 package com.example.myapplication.ViewModel
 
 import android.content.Context
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.myapplication.model.Team
 import com.example.myapplication.repository.RepositoryTeam
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class ViewModelTeam : ViewModel() {
@@ -32,6 +29,13 @@ class ViewModelTeam : ViewModel() {
 
     fun putTimesFavorito(context: Context, team: Team) = CoroutineScope(Dispatchers.IO).launch {
         repository.inserirTeamsNaLista(context,team)
+    }
+
+    fun searchTimeById(context: Context, id: Int):Team = repository.pegaTeamPorId(context,id)
+
+
+    fun removeTimesFavorito(context: Context, team: Team) = CoroutineScope(Dispatchers.IO).launch {
+        repository.removerTeam(context,team)
     }
 
 }

@@ -38,14 +38,11 @@ public class ListaFavoritosAdapter extends RecyclerView.Adapter<ListaFavoritosVi
         final Team time = timeList.get(position);
 
         Picasso.get().load(time.getStrTeamBadge()).into(holder.imgEscudoFavorito);
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Context context = v.getContext();
-                Intent intent = new Intent(context, TimeFavoritoActivity.class);
-                intent.putExtra("time",time);
-                context.startActivity(intent);
-            }
+        holder.cardView.setOnClickListener(v -> {
+            Context context = v.getContext();
+            Intent intent = new Intent(context, TimeFavoritoActivity.class);
+            intent.putExtra("time",time);
+            context.startActivity(intent);
         });
     }
 

@@ -8,7 +8,7 @@ import com.example.myapplication.model.Team
 interface TeamDao {
 
     @Query("SELECT * FROM team")
-    fun puxaTodoTeam(): MutableList<Team>
+    suspend fun puxaTodoTeam(): MutableList<Team>
 
     @Query("SELECT * FROM team")
     fun puxaAe(): List<Team>

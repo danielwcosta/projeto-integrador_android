@@ -53,6 +53,7 @@ class ListaFavoritosActivity : ActBase() {
         btnAddTime.setOnClickListener { v: View? ->
             val procurarFavoritoIntent = Intent(activity, ProcurarFavoritosActivity::class.java)
             startActivity(procurarFavoritoIntent)
+            finish()
         }
         setaVoltar.setOnClickListener { v: View? ->
             finish()
