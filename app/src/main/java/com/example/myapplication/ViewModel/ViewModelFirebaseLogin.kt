@@ -26,6 +26,7 @@ class ViewModelFirebaseLogin : ViewModel() {
         onLoginFail()
     }
 
+
     fun logOff() {
         val message: String
         if (user != null) {

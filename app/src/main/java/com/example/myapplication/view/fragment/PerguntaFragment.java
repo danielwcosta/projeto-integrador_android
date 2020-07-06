@@ -1,9 +1,6 @@
-package com.example.myapplication.fragment;
+package com.example.myapplication.view.fragment;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 
 
@@ -18,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.example.myapplication.model.Pergunta;
@@ -34,19 +30,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static com.example.myapplication.util.UtilKt.estaConectado;
+
+
 public class PerguntaFragment extends Fragment {
 
     private ImageView imgPergunta,imgRespondeu;
     private TextView txtPlacar, txtPergunta;
     private Button btnAlternativa1, btnAlternativa2, btnAlternativa3, btnAlternativa4;
     private List<Pergunta> listaperguntas;
-    private PerguntaFragment activity = this;
     private boolean semDuploClick = true;
     private int acertos = 0, erros = 0;
 
     public PerguntaFragment() {
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,57 +58,6 @@ public class PerguntaFragment extends Fragment {
         initViews(view);
 
         criaPerguntaNaTela(view);
-
-    }
-
-    @SuppressLint("SetTextI18n")
-    private void criaPerguntaNaTela(@NonNull View view) {
-        imgRespondeu.setImageResource(0);
-        imgRespondeu.setBackgroundColor(0);
-        txtPlacar.setText("Acertos " + acertos + " x " + erros + " Erros");
-        semDuploClick = true;
-        if(estaConectado(view.getContext())){carregaTodasPerguntas();} else{ carregaPerguntasOffline();}
-
-        Random aleatorio = new Random();
-        int numAleatorio = aleatorio.nextInt(listaperguntas.size());
-        String respostaCerta = listaperguntas.get(numAleatorio).getResposta();
-
-        if (!listaperguntas.get(numAleatorio).getImagem().isEmpty() ) {
-            Picasso.get().load(listaperguntas.get(numAleatorio).getImagem()).into(imgPergunta);
-            txtPergunta.setText(listaperguntas.get(numAleatorio).getPergunta());
-            btnAlternativa1.setText(listaperguntas.get(numAleatorio).getAlternativa1());
-            btnAlternativa2.setText(listaperguntas.get(numAleatorio).getAlternativa2());
-            btnAlternativa3.setText(listaperguntas.get(numAleatorio).getAlternativa3());
-            btnAlternativa4.setText(listaperguntas.get(numAleatorio).getAlternativa4());
-        }else{
-        imgPergunta.setImageResource(R.drawable.logo_app);
-        txtPergunta.setText(listaperguntas.get(numAleatorio).getPergunta());
-        btnAlternativa1.setText(listaperguntas.get(numAleatorio).getAlternativa1());
-        btnAlternativa2.setText(listaperguntas.get(numAleatorio).getAlternativa2());
-        btnAlternativa3.setText(listaperguntas.get(numAleatorio).getAlternativa3());
-        btnAlternativa4.setText(listaperguntas.get(numAleatorio).getAlternativa4());
-        }
-
-        btnAlternativa1.setOnClickListener(v -> {
-            if(semDuploClick){
-            if(listaperguntas.get(numAleatorio).getAlternativa1().equals(respostaCerta)){respondeuCerto();}else{respondeuErrado();}
-                }
-        });
-        btnAlternativa2.setOnClickListener(v -> {
-            if(semDuploClick){
-                if(listaperguntas.get(numAleatorio).getAlternativa2().equals(respostaCerta)){respondeuCerto();}else{respondeuErrado();}
-                }
-        });
-        btnAlternativa3.setOnClickListener(v -> {
-            if(semDuploClick){
-                if(listaperguntas.get(numAleatorio).getAlternativa3().equals(respostaCerta)){respondeuCerto();}else{respondeuErrado();}
-                }
-        });
-        btnAlternativa4.setOnClickListener(v -> {
-            if(semDuploClick){
-                if(listaperguntas.get(numAleatorio).getAlternativa4().equals(respostaCerta)){respondeuCerto();}else{respondeuErrado();}
-                }
-        });
     }
 
     private void initViews(@NonNull View view) {
@@ -123,6 +69,66 @@ public class PerguntaFragment extends Fragment {
         btnAlternativa2 = view.findViewById(R.id.PerguntaFragment_btn_resposta2);
         btnAlternativa3 = view.findViewById(R.id.PerguntaFragment_btn_resposta3);
         btnAlternativa4 = view.findViewById(R.id.PerguntaFragment_btn_resposta4);
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void criaPerguntaNaTela(@NonNull View view) {
+        imgRespondeu.setImageResource(0);
+        imgRespondeu.setBackgroundColor(0);
+        txtPlacar.setText("Acertos " + acertos + " x " + erros + " Erros");
+        semDuploClick = true;
+
+        if(estaConectado(view.getContext())){carregaTodasPerguntas();}
+        else{ carregaPerguntasOffline();}
+
+        montaPergunta();
+    }
+
+    private void montaPergunta() {
+        Random aleatorio = new Random();
+        int posicaoPergunta = aleatorio.nextInt(listaperguntas.size());
+        String respostaCerta = listaperguntas.get(posicaoPergunta).getResposta();
+
+        if (!listaperguntas.get(posicaoPergunta).getImagem().isEmpty() ) {
+            Picasso.get().load(listaperguntas.get(posicaoPergunta).getImagem()).into(imgPergunta);
+            txtPergunta.setText(listaperguntas.get(posicaoPergunta).getPergunta());
+            btnAlternativa1.setText(listaperguntas.get(posicaoPergunta).getAlternativa1());
+            btnAlternativa2.setText(listaperguntas.get(posicaoPergunta).getAlternativa2());
+            btnAlternativa3.setText(listaperguntas.get(posicaoPergunta).getAlternativa3());
+            btnAlternativa4.setText(listaperguntas.get(posicaoPergunta).getAlternativa4());
+        }else{
+        imgPergunta.setImageResource(R.drawable.logo_app);
+        txtPergunta.setText(listaperguntas.get(posicaoPergunta).getPergunta());
+        btnAlternativa1.setText(listaperguntas.get(posicaoPergunta).getAlternativa1());
+        btnAlternativa2.setText(listaperguntas.get(posicaoPergunta).getAlternativa2());
+        btnAlternativa3.setText(listaperguntas.get(posicaoPergunta).getAlternativa3());
+        btnAlternativa4.setText(listaperguntas.get(posicaoPergunta).getAlternativa4());
+        }
+
+        btnAlternativa1.setOnClickListener(v -> {
+            if(semDuploClick){
+                 if(listaperguntas.get(posicaoPergunta).getAlternativa1().equals(respostaCerta)){respondeuCerto();}
+                 else{respondeuErrado();}
+                }
+        });
+        btnAlternativa2.setOnClickListener(v -> {
+            if(semDuploClick){
+                if(listaperguntas.get(posicaoPergunta).getAlternativa2().equals(respostaCerta)){respondeuCerto();}
+                else{respondeuErrado();}
+                }
+        });
+        btnAlternativa3.setOnClickListener(v -> {
+            if(semDuploClick){
+                if(listaperguntas.get(posicaoPergunta).getAlternativa3().equals(respostaCerta)){respondeuCerto();}
+                else{respondeuErrado();}
+                }
+        });
+        btnAlternativa4.setOnClickListener(v -> {
+            if(semDuploClick){
+                if(listaperguntas.get(posicaoPergunta).getAlternativa4().equals(respostaCerta)){respondeuCerto();}
+                else{respondeuErrado();}
+                }
+        });
     }
 
     @SuppressLint({"SetTextI18n"})
@@ -150,7 +156,6 @@ public class PerguntaFragment extends Fragment {
             criaPerguntaNaTela(getView());
         }, 1000);
         };
-
 
     private String carregaJsonDoAsset(String file) {
         String json = "";
@@ -251,15 +256,4 @@ public class PerguntaFragment extends Fragment {
             e.printStackTrace();
         }
     }
-
-    public static boolean estaConectado(Context context) {
-        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        if ( cm != null ) {
-            NetworkInfo ni = cm.getActiveNetworkInfo();
-            return ni != null && ni.isConnected();
-        }
-        return false;
-    }
 }
-

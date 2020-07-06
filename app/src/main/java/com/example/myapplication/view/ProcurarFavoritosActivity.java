@@ -7,12 +7,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.Layout;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -22,8 +19,8 @@ import android.widget.Toast;
 import com.example.myapplication.ViewModel.ViewModelTeam;
 import com.example.myapplication.adapter.ProcurarFavoritosAdapter;
 import com.example.myapplication.R;
-import com.example.myapplication.fragment.PerguntaFragment;
 import com.example.myapplication.model.Team;
+import com.example.myapplication.util.UtilKt;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -91,36 +88,51 @@ public class ProcurarFavoritosActivity extends AppCompatActivity implements Adap
         }
         if(text.equals("Brasil")){
             adapter.clearApplications();
-            viewModelTeam.getTeamsLeague(4351);//Brasil Serie A
+            if(UtilKt.estaConectado(this)){
+                viewModelTeam.getTeamsLeague(4351);//Brasil Serie A
 
-            Handler handler = new Handler();
-            handler.postDelayed(() -> {
-            viewModelTeam.getTeamsLeague(4404);//Brasil Serie B
-            }, 2000);
+                Handler handler = new Handler();
+                handler.postDelayed(() -> {
+                    viewModelTeam.getTeamsLeague(4404);//Brasil Serie B
+                }, 2000);
+            }else {toast();}
+
         }
         if(text.equals("Inglaterra")){
             adapter.clearApplications();
-            viewModelTeam.getTeamsLeague(4328);
+            if(UtilKt.estaConectado(this)){
+                viewModelTeam.getTeamsLeague(4328);}else {toast();}
+
         }
         if(text.equals("Alemanha")){
             adapter.clearApplications();
-            viewModelTeam.getTeamsLeague(4331);
+                        if(UtilKt.estaConectado(this)) {
+                            viewModelTeam.getTeamsLeague(4331);
+                        }else{toast();}
         }
         if(text.equals("França")){
             adapter.clearApplications();
-            viewModelTeam.getTeamsLeague(4334);
+                        if(UtilKt.estaConectado(this)) {
+                            viewModelTeam.getTeamsLeague(4334);
+                        }else{toast();}
         }
         if(text.equals("Espanha")){
             adapter.clearApplications();
-            viewModelTeam.getTeamsLeague(4335);
+                        if(UtilKt.estaConectado(this)) {
+                            viewModelTeam.getTeamsLeague(4335);
+                        }else{toast();}
         }
         if(text.equals("Itália")){
             adapter.clearApplications();
-            viewModelTeam.getTeamsLeague(4332);
+                        if(UtilKt.estaConectado(this)) {
+                            viewModelTeam.getTeamsLeague(4332);
+                        }else{toast();}
         }
         if(text.equals("Argentina")){
             adapter.clearApplications();
-            viewModelTeam.getTeamsLeague(4406);
+                        if(UtilKt.estaConectado(this)) {
+                            viewModelTeam.getTeamsLeague(4406);
+                        }else{toast();}
         }
     }
 
@@ -129,4 +141,9 @@ public class ProcurarFavoritosActivity extends AppCompatActivity implements Adap
         adapter.clearApplications();
 
     }
+
+    private void toast() {
+        Toast.makeText(this, "Erroo!!! Sem internet! =(", Toast.LENGTH_LONG).show();
+    }
+
 }

@@ -1,5 +1,7 @@
 package com.example.myapplication.util
 
+import android.content.Context
+import android.net.ConnectivityManager
 import android.widget.EditText
 
 fun editTextIsEmpty(vararg editTexts: EditText): Boolean {
@@ -32,4 +34,13 @@ fun minCaracteres(editText: EditText): Boolean {
 
 fun emailValido(email: EditText): Boolean {
     return email.text.toString().contains("@") && email.text.toString().contains(".com")
+}
+
+fun estaConectado(context: Context): Boolean {
+    val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    if (cm != null) {
+        val ni = cm.activeNetworkInfo
+        return ni != null && ni.isConnected
+    }
+    return false
 }

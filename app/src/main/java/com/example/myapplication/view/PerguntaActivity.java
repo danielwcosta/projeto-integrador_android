@@ -7,19 +7,15 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.myapplication.fragment.FavoritosEscudoFragment;
-import com.example.myapplication.fragment.PerguntaFragment;
+import com.example.myapplication.view.fragment.PerguntaFragment;
 import com.example.myapplication.R;
 
 public class PerguntaActivity extends AppCompatActivity {

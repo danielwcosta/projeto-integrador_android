@@ -16,6 +16,7 @@ import com.example.myapplication.custom.dp
 import com.example.myapplication.custom.toast
 import com.example.myapplication.util.Helper
 import com.example.myapplication.util.editTextEmptyError
+import com.example.myapplication.util.editTextIsEmpty
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
@@ -51,8 +52,6 @@ class LoginActivity : AppCompatActivity() {
     private val viewModel: ViewModelFirebaseLogin by lazy {
         ViewModelProviders.of(this).get(ViewModelFirebaseLogin::class.java)
     }
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -160,14 +159,4 @@ class LoginActivity : AppCompatActivity() {
         btnLoginGoogle = findViewById(R.id.login_button_google_id)
     }
 
-    companion object {
-        fun editTextIsEmpty(vararg editTexts: EditText): Boolean {
-            for (editText in editTexts) {
-                if (editText.text.toString().isEmpty()) {
-                    return true
-                }
-            }
-            return false
-        }
-    }
 }
