@@ -43,20 +43,20 @@ class TimeFavoritoActivity : AppCompatActivity() {
         geraViews()
         if (intent != null) {
             val time = intent.extras!!.getParcelable<Team>("time")
-            nomeTime!!.text = time!!.strTeam
+            nomeTime.text = time!!.strTeam
             Picasso.get().load(time.strTeamBadge).into(imgEscudo)
-            nomePais!!.text = time.strCountry
-            nomeCidade!!.text = time.strStadiumLocation
-            nomeEstadio!!.text = time.strStadium
-            capacidadeEstadio!!.text = time.intStadiumCapacity
-            anoFundacao!!.text = time.intFormedYear
-            webSite!!.text = time.strWebsite
+            nomePais.text = time.strCountry
+            nomeCidade.text = time.strStadiumLocation
+            nomeEstadio.text = time.strStadium
+            capacidadeEstadio.text = time.intStadiumCapacity
+            anoFundacao.text = time.intFormedYear
+            webSite.text = time.strWebsite
             Picasso.get().load(time.strTeamJersey).into(imgCamisa)
             Picasso.get().load(time.strStadiumThumb).into(imgEstadio)
             if (time.strDescriptionPT != null) {
-                infoTime!!.text = time.strDescriptionPT
+                infoTime.text = time.strDescriptionPT
             } else {
-                infoTime!!.text = "Não há informações disponíveis."
+                infoTime.text = "Não há informações disponíveis."
             }
         }
         setaVoltar.setOnClickListener(View.OnClickListener {

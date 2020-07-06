@@ -7,7 +7,9 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import base.ActBind
+import com.example.myapplication.ViewModel.ViewModelUsuarioRoom
 import com.example.myapplication.custom.update
+import com.example.myapplication.custom.viewModel
 import com.example.myapplication.data.DatabaseBuilder
 import com.example.myapplication.databinding.ActivityCadastroBinding
 import com.example.myapplication.model.Usuario
@@ -21,6 +23,8 @@ import java.util.*
 class CadastroActivity : ActBind<ActivityCadastroBinding>() {
 
     override val binding by lazy { bind(ActivityCadastroBinding::class) }
+
+    private val viewModelUsuario: ViewModelUsuarioRoom by viewModel()
 
     private val accessUsuario by lazy {
         DatabaseBuilder.getAppDatabase(this).accessUsuario()
@@ -73,11 +77,12 @@ class CadastroActivity : ActBind<ActivityCadastroBinding>() {
                     cadastroEmailId.text.toString(),
                     cadastroSenhaId.text.toString()
             )
-            accessUsuario.inserir(usuario)
+
+            viewModelUsuario.addUsuario(this@CadastroActivity,usuario)
             usuario.apply { toast("Usuário: $nomeCompleto\n$user\n$email\n Cadastrado com sucesso!! ") }
-            usuarios.update(accessUsuario.puxaTodaLista())
-//            val loginIntent = Intent(activity, LoginActivity::class.java)
-//            startActivity(loginIntent)
+
+            viewModelUsuario.updateUsuario(this@CadastroActivity,usuario)
+
         }
 
     }

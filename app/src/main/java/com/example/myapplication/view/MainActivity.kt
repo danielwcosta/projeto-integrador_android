@@ -6,17 +6,16 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import base.ActBase
 import com.example.myapplication.R
-import com.example.myapplication.data.AppDatabase
-import com.example.myapplication.data.DatabaseBuilder
-import com.example.myapplication.data.DatabaseBuilder.getAppDatabase
+import com.example.myapplication.ViewModel.ViewModelUsuarioRoom
+import com.example.myapplication.custom.viewModel
 import com.example.myapplication.util.Helper
 import com.facebook.CallbackManager
 import com.facebook.login.LoginManager
 import com.google.firebase.auth.FirebaseAuth
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : ActBase() {
     var buttonRegras: Button? = null
     var buttonJogar: Button? = null
     var buttonTimesFavoritos: Button? = null
@@ -25,11 +24,8 @@ class MainActivity : AppCompatActivity() {
     var callbackManager = CallbackManager.Factory.create()
     var firebaseAuth = FirebaseAuth.getInstance()
 
-    private val accessUsuario by lazy {
-        DatabaseBuilder.getAppDatabase(this).accessUsuario()
-    }
+//    private val viewModelUsuario: ViewModelUsuarioRoom by viewModel()
 
-    lateinit var database : AppDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +44,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(listaFavoritosIntent)
         }
 //        val userID = firebaseAuth.currentUser!!.uid
+
+//        val usuarioRoom = viewModelUsuario.searchUsuarioByUid(this,userID)
+//        txtUsuario.text = usuarioRoom.user
+
 //        accessUsuario.procuraUserId(userID).run {
 //            txtUsuario?.setText(user)
 //        }
