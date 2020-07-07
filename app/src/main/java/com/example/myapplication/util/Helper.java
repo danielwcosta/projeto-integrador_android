@@ -3,8 +3,12 @@ package com.example.myapplication.util;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.provider.MediaStore;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.myapplication.view.LoginActivity;
@@ -17,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import com.example.myapplication.R;
 
+import java.io.ByteArrayOutputStream;
 
 
 public class Helper {

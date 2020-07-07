@@ -3,22 +3,28 @@ package com.example.myapplication.view
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
+import android.content.Intent.*
+import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.drawable.toBitmap
+import base.ActBase
 import com.example.myapplication.R
 import com.example.myapplication.ViewModel.ViewModelTeam
+import com.example.myapplication.custom.onClick
 import com.example.myapplication.custom.toast
 import com.example.myapplication.custom.viewModel
 import com.example.myapplication.model.Team
-import com.example.myapplication.model.Time
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.squareup.picasso.Picasso
+import java.io.ByteArrayOutputStream
 
-class TimeFavoritoActivity : AppCompatActivity() {
+class TimeFavoritoActivity :ActBase() {
     lateinit var nomeTime: TextView
     lateinit var nomePais: TextView
     lateinit var nomeCidade: TextView
@@ -32,6 +38,7 @@ class TimeFavoritoActivity : AppCompatActivity() {
     lateinit var imgCamisa: ImageView
     lateinit var imgEstadio: ImageView
     lateinit var removeFavorito: Button
+    lateinit var compartilhar: FloatingActionButton
     private val activity: Activity = this
 
     private val viewModelTeam: ViewModelTeam by viewModel()
@@ -78,6 +85,34 @@ class TimeFavoritoActivity : AppCompatActivity() {
             }else{toast("Erro! não foi possivel remover dos favoritos")}
 
         })
+
+        compartilhar.onClick {
+            if (intent != null) {
+                val time = intent.extras!!.getParcelable<Team>("time")
+                var nomeTime = time?.strTeam?.trim()?.replace(" ".toRegex(), "")
+                Picasso.get().load(time?.strTeamBadge).into(imgEscudo)
+                startActivity(
+                    createChooser(
+                            Intent().apply {
+                                action = ACTION_SEND
+                                type = "text/plain"
+                                type = "image/png"
+                                if (time != null) {
+                                    val bitmap = imgEscudo.getDrawable().toBitmap()
+                                    val bytes = ByteArrayOutputStream()
+
+                                    bitmap.compress(Bitmap.CompressFormat.PNG,50, bytes)
+
+                                    val path: String = MediaStore.Images.Media.insertImage(contentResolver, bitmap, "Sob Pressão", null)
+                                    val uri = Uri.parse(path)
+                                    putExtra(EXTRA_TEXT, "#SobPressãoApp\n #MeuTimeFavorito \n #${nomeTime}")
+                                    putExtra(EXTRA_STREAM,uri)
+                                                           }
+                            }, "Texto do Menuzinho Bacana"
+                    )
+            )
+            }
+        }
     }
     private fun geraViews() {
         // TextViews
@@ -94,6 +129,9 @@ class TimeFavoritoActivity : AppCompatActivity() {
         imgEscudo = findViewById(R.id.time_favorito_escudo_img_id)
         imgCamisa = findViewById(R.id.time_favorito_camisa_img_id)
         imgEstadio = findViewById(R.id.time_favorito_estadio_img_id)
+        // Buttons
         removeFavorito = findViewById(R.id.time_favorito_removerfav_btn_id)
+        compartilhar = findViewById(R.id.time_favorito_btnshare_id)
     }
+
 }

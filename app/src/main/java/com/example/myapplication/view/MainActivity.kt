@@ -11,16 +11,17 @@ import com.example.myapplication.R
 import com.example.myapplication.ViewModel.ViewModelUsuarioRoom
 import com.example.myapplication.custom.viewModel
 import com.example.myapplication.util.Helper
+import com.example.myapplication.util.logout
 import com.facebook.CallbackManager
 import com.facebook.login.LoginManager
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : ActBase() {
-    var buttonRegras: Button? = null
-    var buttonJogar: Button? = null
-    var buttonTimesFavoritos: Button? = null
+    lateinit var buttonRegras: Button
+    lateinit var buttonJogar: Button
+    lateinit var buttonTimesFavoritos: Button
     var activity: Activity = this
-    var txtUsuario: TextView? = null
+    lateinit var txtUsuario: TextView
     var callbackManager = CallbackManager.Factory.create()
     var firebaseAuth = FirebaseAuth.getInstance()
 
@@ -69,11 +70,8 @@ class MainActivity : ActBase() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        Helper.logout(activity)
+        logout(activity)
         Toast.makeText(activity, "Usuario deslogado.", Toast.LENGTH_LONG).show()
     }
 
-    private fun logOffFaceBook() {
-        LoginManager.getInstance().logOut()
-    }
 }

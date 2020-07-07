@@ -99,7 +99,7 @@ class CadastroActivity : ActBind<ActivityCadastroBinding>() {
 
                 startActivity(Intent(getApplicationContext(), MainActivity::class.java))
             } else {
-                Toast.makeText(this@CadastroActivity, "Error ! " + task.exception!!.message, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@CadastroActivity, "Erro ! " + task.exception!!.message, Toast.LENGTH_SHORT).show()
             }
         })
     }

@@ -1,6 +1,7 @@
 package com.example.myapplication.ViewModel
 
 import android.content.Intent
+
 import androidx.lifecycle.ViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.firebase.auth.FirebaseAuth
@@ -11,7 +12,7 @@ class ViewModelFirebaseLogin : ViewModel() {
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
     val user get() = auth.currentUser
-    lateinit var notifyUI: (String,Boolean) -> Unit // observem que não tem atribuição aqui
+    lateinit var notifyUI: (String,Boolean) -> Unit
 
 
     fun logIn(data: Intent?) = try {
@@ -25,7 +26,6 @@ class ViewModelFirebaseLogin : ViewModel() {
     } catch (exception: Exception) {
         onLoginFail()
     }
-
 
     fun logOff() {
         val message: String

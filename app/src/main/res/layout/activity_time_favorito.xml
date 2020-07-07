@@ -252,4 +252,18 @@
                 />
         </LinearLayout>
     </ScrollView>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="15dp">
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/time_favorito_btnshare_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                app:srcCompat="@drawable/ic_baseline_share_24"
+                android:backgroundTint="@color/colorUltraLightGreen"
+                />
+            </FrameLayout>
 </FrameLayout>

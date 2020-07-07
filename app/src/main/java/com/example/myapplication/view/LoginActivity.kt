@@ -10,13 +10,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
+import base.ActBase
 import com.example.myapplication.R
 import com.example.myapplication.ViewModel.ViewModelFirebaseLogin
 import com.example.myapplication.custom.dp
 import com.example.myapplication.custom.toast
-import com.example.myapplication.util.Helper
-import com.example.myapplication.util.editTextEmptyError
-import com.example.myapplication.util.editTextIsEmpty
+import com.example.myapplication.util.*
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
@@ -31,17 +30,16 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 
-class LoginActivity : AppCompatActivity() {
-    private var email: EditText? = null
-    private var senha: EditText? = null
-    private var cadastro: TextView? = null
-    private var btnLogin: Button? = null
-    private var btnLoginFaceBook: LoginButton? = null
-    private var btnLoginGoogle: SignInButton? = null
+class LoginActivity : ActBase() {
+    lateinit var email: EditText
+    lateinit var senha: EditText
+    lateinit var cadastro: TextView
+    lateinit var btnLogin: Button
+    lateinit var btnLoginFaceBook: LoginButton
+    lateinit var btnLoginGoogle: SignInButton
     private val activity: Activity = this
-    private val loginCode = 300
     private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
-
+    private val loginCode = 300
 
     private val dp16 = 16.dp
     private var zuckerberg = "4"
@@ -55,14 +53,14 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Helper.deslogaLogados(activity)
+        deslogaLogados(activity)
         viewModel.notifyUI = { mensagem, vaiLogar -> atualizarTela(mensagem, vaiLogar) }
         initView()
         initClickListeners()
     }
 
     private fun atualizarTela(mensagem: String, vaiLogar: Boolean) {
-        Toast.makeText(activity, mensagem, Toast.LENGTH_LONG).show()
+        toast(mensagem)
         if (vaiLogar) {
             val mainIntent = Intent(activity, MainActivity::class.java)
             startActivity(mainIntent)
@@ -103,11 +101,12 @@ class LoginActivity : AppCompatActivity() {
         val userUid = firebaseAuth?.currentUser?.uid.toString()
         // authenticate the user
         firebaseAuth?.signInWithEmailAndPassword(email.text.toString(), senha.text.toString())?.addOnCompleteListener(OnCompleteListener<AuthResult?> { task ->
+
             if (task.isSuccessful) {
                 irParaMain(userUid)
 
             } else {
-                Toast.makeText(this@LoginActivity, "Error ! " + task.exception!!.message, Toast.LENGTH_SHORT).show()
+                toast("Erro !! " + task.exception!!.message)
             }
         })
     }
@@ -128,7 +127,7 @@ class LoginActivity : AppCompatActivity() {
         val facebookCallback = object : FacebookCallback<LoginResult> {
 
             override fun onSuccess(result: LoginResult?) {
-                toast("SUCESSO!")
+                toast("Conectado pelo Facebook")
                 irParaMain(userID)
                 //fotinha.setImageFromURL(urlFotoFace(userID))
             }
@@ -138,14 +137,14 @@ class LoginActivity : AppCompatActivity() {
             }
 
             override fun onError(error: FacebookException?) {
-                toast("EROU!")
+                toast("Ocorreu um erro ao conectar no Facebook")
             }
         }
         registerCallback(callbackManager, facebookCallback)
     }
 
     private fun irParaMain(uiid: String) {
-        Helper.salvarIdUsuario(applicationContext, uiid)
+        salvarIdUsuario(applicationContext, uiid)
         startActivity(Intent(this@LoginActivity, MainActivity::class.java))
     }
 
