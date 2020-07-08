@@ -105,7 +105,8 @@ class TimeFavoritoActivity :ActBase() {
 
                                     val path: String = MediaStore.Images.Media.insertImage(contentResolver, bitmap, "Sob Pressão", null)
                                     val uri = Uri.parse(path)
-                                    putExtra(EXTRA_TEXT, "#SobPressãoApp\n #MeuTimeFavorito \n #${nomeTime}")
+                                    putExtra(EXTRA_TEXT, "#DigitalHouse #DesenvolvimentoAndroid \n " +
+                                            "#SobPressãoApp #MeuTimeFavorito #${nomeTime}")
                                     putExtra(EXTRA_STREAM,uri)
                                                            }
                             }, "Texto do Menuzinho Bacana"

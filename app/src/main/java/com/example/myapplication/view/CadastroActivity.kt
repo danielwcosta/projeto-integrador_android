@@ -2,13 +2,11 @@ package com.example.myapplication.view
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import base.ActBind
 import com.example.myapplication.ViewModel.ViewModelUsuarioRoom
-import com.example.myapplication.custom.update
 import com.example.myapplication.custom.viewModel
 import com.example.myapplication.data.DatabaseBuilder
 import com.example.myapplication.databinding.ActivityCadastroBinding
@@ -18,7 +16,6 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import java.util.*
 
 class CadastroActivity : ActBind<ActivityCadastroBinding>() {
 
@@ -30,7 +27,7 @@ class CadastroActivity : ActBind<ActivityCadastroBinding>() {
         DatabaseBuilder.getAppDatabase(this).accessUsuario()
     }
     private val usuarios: MutableList<Usuario> = mutableListOf()
-    private val fAuth = FirebaseAuth.getInstance()
+    private val firebaseAuth = FirebaseAuth.getInstance()
     private val fStore = FirebaseFirestore.getInstance()
     lateinit var userID: String
 
@@ -67,7 +64,8 @@ class CadastroActivity : ActBind<ActivityCadastroBinding>() {
 
         }else {
             cadastrarFirebase(cadastroEmailId,cadastroSenhaId)
-            userID = fAuth.currentUser?.uid.toString()
+
+            val userID = firebaseAuth.currentUser!!.uid
 
             val usuario = Usuario(
                     0,
@@ -92,10 +90,10 @@ class CadastroActivity : ActBind<ActivityCadastroBinding>() {
 
     private fun cadastrarFirebase(email : EditText,senha : EditText){
 
-        fAuth.createUserWithEmailAndPassword(email.text.toString(), senha.text.toString()).addOnCompleteListener(OnCompleteListener<AuthResult?> { task ->
+        firebaseAuth.createUserWithEmailAndPassword(email.text.toString(), senha.text.toString()).addOnCompleteListener(OnCompleteListener<AuthResult?> { task ->
             if (task.isSuccessful) {
 
-                userID = fAuth.currentUser?.getUid().toString()
+                userID = firebaseAuth.currentUser?.getUid().toString()
 
                 startActivity(Intent(getApplicationContext(), MainActivity::class.java))
             } else {

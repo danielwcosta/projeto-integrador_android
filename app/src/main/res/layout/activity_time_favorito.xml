@@ -263,7 +263,7 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 app:srcCompat="@drawable/ic_baseline_share_24"
-                android:backgroundTint="@color/colorUltraLightGreen"
+                android:backgroundTint="@color/ic_launcher_background"
                 />
             </FrameLayout>
 </FrameLayout>

@@ -12,6 +12,8 @@ class RepositoryUsuario {
 
     suspend fun inserirUsuario(context: Context, usuario: Usuario): Unit= initDataBase(context).accessUsuario().inserir(usuario)
 
+    fun pegaUsuarioId(context: Context, id: Int): Usuario = initDataBase(context).accessUsuario().encontrarPorId(id)
+
     fun pegaUsuarioPorUid(context: Context, uid: String): Usuario = initDataBase(context).accessUsuario().procuraUserId(uid)
 
     fun atulizarUsuario(context: Context, usuario: Usuario): Unit = initDataBase(context).accessUsuario().atualizar(usuario)

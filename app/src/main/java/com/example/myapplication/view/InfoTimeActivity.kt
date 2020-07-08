@@ -62,6 +62,7 @@ class InfoTimeActivity : ActBase() {
         setaVoltar!!.setOnClickListener {
             val procFavIntent = Intent(activity, ProcurarFavoritosActivity::class.java)
             startActivity(procFavIntent)
+            finish()
         }
         addFavoritos!!.setOnClickListener { v: View? ->
             if (intent != null) {

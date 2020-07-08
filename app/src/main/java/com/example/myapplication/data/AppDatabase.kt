@@ -36,7 +36,7 @@ object DatabaseBuilder {
         val database = Room.databaseBuilder(
                 context.applicationContext,
                 AppDatabase::class.java, "database"
-        ) .fallbackToDestructiveMigration() // usar para limpar o database q foi modificado,usar durante desenvolvimento evite apelar assim..
+        ) //.fallbackToDestructiveMigration() // usar para limpar o database q foi modificado,usar durante desenvolvimento evite apelar assim..
 
         database.allowMainThreadQueries()
         val appDatabase = database.build()
