@@ -25,6 +25,8 @@ class ViewModelUsuarioRoom: ViewModel() {
         repository.inserirUsuario(context,usuario)
     }
 
+    fun searchUsuarioByEmail(context: Context, email: String):Usuario = repository.pegaUsuarioPorEmail(context,email)
+
     fun searchUsuarioByUid(context: Context, uid: String):Usuario = repository.pegaUsuarioPorUid(context,uid)
 
     fun updateUsuario(context: Context, usuario: Usuario) = CoroutineScope(Dispatchers.IO).launch {

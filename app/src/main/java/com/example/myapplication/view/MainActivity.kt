@@ -15,7 +15,9 @@ import com.example.myapplication.custom.CircleImageView
 import com.example.myapplication.custom.setImageFromURL
 import com.example.myapplication.custom.viewModel
 import com.example.myapplication.util.Helper
+import com.example.myapplication.util.getIdUsuario
 import com.example.myapplication.util.logout
+import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.facebook.login.LoginManager
 import com.google.firebase.auth.FirebaseAuth
@@ -26,14 +28,22 @@ class MainActivity : ActBase() {
     lateinit var buttonJogar: Button
     lateinit var buttonTimesFavoritos: Button
     lateinit var imgAvatar: CircleImageView
+    lateinit var txtUsuario: TextView
 
     var activity: Activity = this
-    lateinit var txtUsuario: TextView
+
+    private var USER_DEFAULT = "https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png"
+
+
+    private var zuckerberg = "4"
     var callbackManager = CallbackManager.Factory.create()
+    private val accessToken: AccessToken? get() = AccessToken.getCurrentAccessToken()
+    private val userID get() = accessToken?.userId ?: zuckerberg
+
     var firebaseAuth = FirebaseAuth.getInstance()
 
 
-//    private val viewModelUsuario: ViewModelUsuarioRoom by viewModel()
+    private val viewModelUsuario: ViewModelUsuarioRoom by viewModel()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,18 +62,17 @@ class MainActivity : ActBase() {
             val listaFavoritosIntent = Intent(activity, ListaFavoritosActivity::class.java)
             startActivity(listaFavoritosIntent)
         }
+        if(userID.equals("4") ){
+            val userID = firebaseAuth.currentUser?.email!!
+            val usuarioRoom = viewModelUsuario.searchUsuarioByEmail(activity, userID)
 
-           imgAvatar.setImageFromURL(firebaseAuth.currentUser?.photoUrl)
-           txtUsuario.setText(firebaseAuth.currentUser?.displayName)
+           imgAvatar.setImageFromURL(firebaseAuth.currentUser?.photoUrl ?: USER_DEFAULT)
+           txtUsuario.setText(firebaseAuth.currentUser?.displayName ?:usuarioRoom.nomeCompleto)
+        }else{
+            imgAvatar.setImageFromURL(urlFotoFace(userID))
+            txtUsuario.setText("Daniel Wong Costa")
+        }
 
-//        val userID = firebaseAuth.currentUser!!.uid
-
-//        val usuarioRoom = viewModelUsuario.searchUsuarioByUid(this,userID)
-//        txtUsuario.text = usuarioRoom.user
-
-//        accessUsuario.procuraUserId(userID).run {
-//            txtUsuario?.setText(user)
-//        }
     }
 
     private fun initViews() {
@@ -78,8 +87,8 @@ class MainActivity : ActBase() {
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
         callbackManager.onActivityResult(requestCode, resultCode, data)
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
     override fun onBackPressed() {

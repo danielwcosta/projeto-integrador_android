@@ -15,6 +15,9 @@ interface UsuarioDao {
     @Query("SELECT * FROM usuario where uid LIKE  :uid")
     fun procuraUserId(uid: String): Usuario
 
+    @Query("SELECT * FROM usuario where email LIKE  :email")
+    fun procuraUserEmail(email: String): Usuario
+
     @Query("SELECT COUNT(*) from usuario")
     fun contarTodos(): Int
 

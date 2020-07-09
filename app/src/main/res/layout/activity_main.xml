@@ -38,7 +38,7 @@
         android:id="@+id/MainActivity_textViewMedia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Média de acertos: 5.1"
+        android:text="Quiz Sob Pressão !!!"
         android:textSize="30sp"
         android:layout_marginBottom="30dp"
         android:textColor="@color/colorText"

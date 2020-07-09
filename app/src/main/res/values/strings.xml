@@ -38,9 +38,9 @@
     <string name="sair">Sair</string>
     <string name="_10_seg">10 seg</string>
     <string name="acertos_3_x_3_erros">Acertos 0 x 0 erros</string>
-    <string name="regra1">1 - Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusant doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis.</string>
-    <string name="regra3">3 - Sed ut error sit voluptatem accusant doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis.</string>
-    <string name="regra2">2 - Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusant doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis.</string>
+    <string name="regra1">1 - Clique no botão das alternativas a resposta que você julgue como a correta.</string>
+    <string name="regra2">2 - Acompanhe o placar na parte de cima para acompanhar seus pontos.</string>
+    <string name="regra3">3 - Divirta-se!!!!</string>
     <string name="resposta_1">Manco</string>
     <string name="resposta_2">Viúvo</string>
     <string name="resposta_3">Ovo de pato</string>

@@ -77,6 +77,11 @@ fun salvarIdUsuario(context: Context, uiid: String?) {
     preferences.edit().putString("UIID", uiid).apply()
 }
 
+fun getIdUsuario(context: Context): String? {
+    val preferences = context.getSharedPreferences("CHAVE_APP", Context.MODE_PRIVATE)
+    return preferences.getString("UIID", "")
+}
+
 fun logout(context: Context) {
     val googleSignInClient = google(context)
     if (googleSignInClient != null) {

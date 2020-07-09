@@ -16,5 +16,7 @@ class RepositoryUsuario {
 
     fun pegaUsuarioPorUid(context: Context, uid: String): Usuario = initDataBase(context).accessUsuario().procuraUserId(uid)
 
+    fun pegaUsuarioPorEmail(context: Context, email: String): Usuario = initDataBase(context).accessUsuario().procuraUserEmail(email)
+
     fun atulizarUsuario(context: Context, usuario: Usuario): Unit = initDataBase(context).accessUsuario().atualizar(usuario)
 }

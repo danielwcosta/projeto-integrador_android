@@ -65,7 +65,7 @@ class CadastroActivity : ActBind<ActivityCadastroBinding>() {
         }else {
             cadastrarFirebase(cadastroEmailId,cadastroSenhaId)
 
-            val userID = firebaseAuth.currentUser!!.uid
+            userID = firebaseAuth.currentUser?.getUid().toString()
 
             val usuario = Usuario(
                     0,

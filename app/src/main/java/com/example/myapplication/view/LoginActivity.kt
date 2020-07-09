@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProviders
 import base.ActBase
 import com.example.myapplication.R
 import com.example.myapplication.ViewModel.ViewModelFirebaseLogin
+import com.example.myapplication.ViewModel.ViewModelUsuarioRoom
 import com.example.myapplication.custom.dp
 import com.example.myapplication.custom.toast
 import com.example.myapplication.util.*
@@ -103,7 +104,7 @@ class LoginActivity : ActBase() {
         firebaseAuth?.signInWithEmailAndPassword(email.text.toString(), senha.text.toString())?.addOnCompleteListener(OnCompleteListener<AuthResult?> { task ->
 
             if (task.isSuccessful) {
-                irParaMain()
+                irParaMain(userUid)
 
             } else {
                 toast("Erro !! " + task.exception!!.message)
@@ -128,7 +129,7 @@ class LoginActivity : ActBase() {
 
             override fun onSuccess(result: LoginResult?) {
                 toast("Conectado pelo Facebook")
-                irParaMain()
+                irParaMain(userID)
                 //fotinha.setImageFromURL(urlFotoFace(userID))
             }
 
@@ -143,8 +144,8 @@ class LoginActivity : ActBase() {
         registerCallback(callbackManager, facebookCallback)
     }
 
-    private fun irParaMain() {
-//        salvarIdUsuario(applicationContext, uiid)
+    private fun irParaMain(uiid: String) {
+        salvarIdUsuario(applicationContext, uiid)
         startActivity(Intent(this@LoginActivity, MainActivity::class.java))
     }
 
