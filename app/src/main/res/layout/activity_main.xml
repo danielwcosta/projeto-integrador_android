@@ -7,7 +7,7 @@
     tools:context=".view.MainActivity"
     android:background="@drawable/grama_textura">
 
-    <ImageView
+    <com.example.myapplication.custom.CircleImageView
         android:id="@+id/MainActivity_imageAvatar"
         android:contentDescription="@string/imgavatar"
         android:layout_width="120dp"

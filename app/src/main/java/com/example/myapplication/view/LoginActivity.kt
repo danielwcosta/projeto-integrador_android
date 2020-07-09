@@ -103,7 +103,7 @@ class LoginActivity : ActBase() {
         firebaseAuth?.signInWithEmailAndPassword(email.text.toString(), senha.text.toString())?.addOnCompleteListener(OnCompleteListener<AuthResult?> { task ->
 
             if (task.isSuccessful) {
-                irParaMain(userUid)
+                irParaMain()
 
             } else {
                 toast("Erro !! " + task.exception!!.message)
@@ -128,7 +128,7 @@ class LoginActivity : ActBase() {
 
             override fun onSuccess(result: LoginResult?) {
                 toast("Conectado pelo Facebook")
-                irParaMain(userID)
+                irParaMain()
                 //fotinha.setImageFromURL(urlFotoFace(userID))
             }
 
@@ -143,8 +143,8 @@ class LoginActivity : ActBase() {
         registerCallback(callbackManager, facebookCallback)
     }
 
-    private fun irParaMain(uiid: String) {
-        salvarIdUsuario(applicationContext, uiid)
+    private fun irParaMain() {
+//        salvarIdUsuario(applicationContext, uiid)
         startActivity(Intent(this@LoginActivity, MainActivity::class.java))
     }
 

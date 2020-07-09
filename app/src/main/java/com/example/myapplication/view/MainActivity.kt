@@ -4,26 +4,34 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import base.ActBase
 import com.example.myapplication.R
+import com.example.myapplication.ViewModel.ViewModelFirebaseLogin
 import com.example.myapplication.ViewModel.ViewModelUsuarioRoom
+import com.example.myapplication.custom.CircleImageView
+import com.example.myapplication.custom.setImageFromURL
 import com.example.myapplication.custom.viewModel
 import com.example.myapplication.util.Helper
 import com.example.myapplication.util.logout
 import com.facebook.CallbackManager
 import com.facebook.login.LoginManager
 import com.google.firebase.auth.FirebaseAuth
+import com.squareup.picasso.Picasso
 
 class MainActivity : ActBase() {
     lateinit var buttonRegras: Button
     lateinit var buttonJogar: Button
     lateinit var buttonTimesFavoritos: Button
+    lateinit var imgAvatar: CircleImageView
+
     var activity: Activity = this
     lateinit var txtUsuario: TextView
     var callbackManager = CallbackManager.Factory.create()
     var firebaseAuth = FirebaseAuth.getInstance()
+
 
 //    private val viewModelUsuario: ViewModelUsuarioRoom by viewModel()
 
@@ -44,6 +52,10 @@ class MainActivity : ActBase() {
             val listaFavoritosIntent = Intent(activity, ListaFavoritosActivity::class.java)
             startActivity(listaFavoritosIntent)
         }
+
+           imgAvatar.setImageFromURL(firebaseAuth.currentUser?.photoUrl)
+           txtUsuario.setText(firebaseAuth.currentUser?.displayName)
+
 //        val userID = firebaseAuth.currentUser!!.uid
 
 //        val usuarioRoom = viewModelUsuario.searchUsuarioByUid(this,userID)
@@ -59,8 +71,10 @@ class MainActivity : ActBase() {
         buttonJogar = findViewById(R.id.MainActivity_buttonJogar)
         buttonTimesFavoritos = findViewById(R.id.MainActivity_buttonTimesFavoritos)
         txtUsuario = findViewById(R.id.MainActivity_textViewUsuario)
+        imgAvatar = findViewById(R.id.MainActivity_imageAvatar)
     }
 
+    private fun urlFotoFace(id: String) = "https://graph.facebook.com/$id/picture?type=large"
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
