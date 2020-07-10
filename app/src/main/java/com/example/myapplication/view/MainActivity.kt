@@ -70,9 +70,8 @@ class MainActivity : ActBase() {
            txtUsuario.setText(firebaseAuth.currentUser?.displayName ?:usuarioRoom.nomeCompleto)
         }else{
             imgAvatar.setImageFromURL(urlFotoFace(userID))
-            txtUsuario.setText("Daniel Wong Costa")
+            txtUsuario.setText("")
         }
-
     }
 
     private fun initViews() {
